@@ -45,6 +45,36 @@
             min-height: 100vh;
         }
 
+        .bgm-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 999;
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid var(--border-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            backdrop-filter: blur(4px);
+            transition: all 0.3s;
+        }
+
+        .bgm-btn.playing {
+            animation: spin 4s linear infinite;
+            background: var(--accent-light);
+            border-color: var(--accent-color);
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
         .hero {
             position: relative;
             padding: 60px 24px 40px;
@@ -286,7 +316,13 @@
 </head>
 <body>
 
+<audio id="bgmAudio" loop preload="auto">
+    <source src="./bgm.mp3" type="audio/mpeg">
+</audio>
+
 <div class="mobile-container">
+
+    <button class="bgm-btn" id="bgmBtn" onclick="toggleBgm()" title="음악 켜기/끄기">🎵</button>
 
     <div class="hero">
         <div class="hero-subtitle">We Are Getting Married</div>
@@ -354,6 +390,42 @@
 </div>
 
 <script>
+    const bgmAudio = document.getElementById('bgmAudio');
+    const bgmBtn = document.getElementById('bgmBtn');
+    let isPlaying = false;
+
+    function toggleBgm() {
+        if (isPlaying) {
+            bgmAudio.pause();
+            bgmBtn.classList.remove('playing');
+            bgmBtn.textContent = '🔇';
+            isPlaying = false;
+        } else {
+            bgmAudio.play().then(() => {
+                bgmBtn.classList.add('playing');
+                bgmBtn.textContent = '🎵';
+                isPlaying = true;
+            }).catch(err => {
+                console.log("Audio play blocked:", err);
+            });
+        }
+    }
+
+    function enableAutoPlay() {
+        if (!isPlaying) {
+            bgmAudio.play().then(() => {
+                bgmBtn.classList.add('playing');
+                bgmBtn.textContent = '🎵';
+                isPlaying = true;
+            }).catch(() => {});
+        }
+        document.removeEventListener('click', enableAutoPlay);
+        document.removeEventListener('touchstart', enableAutoPlay);
+    }
+
+    document.addEventListener('click', enableAutoPlay);
+    document.addEventListener('touchstart', enableAutoPlay);
+
     const imageList = Array.from({length: 9}, (_, i) => `./photo${i + 1}.jpg`);
     let currentIndex = 0;
 
