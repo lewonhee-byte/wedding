@@ -210,23 +210,51 @@
     text-align:center;
   }
 
-  /* gallery */
-  .gallery-grid{
-    display:flex;
-    flex-direction:column;
-    gap:16px;
+  /* ---------- 3x3 격자 갤러리 ---------- */
+  .gallery-grid-3x3{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:8px;
     margin-top:10px;
   }
-  .gallery-item{
+  .gallery-item-3x3{
+    position:relative;
     width:100%;
-    border-radius:8px;
+    padding-top:100%; /* 정사각형 비율 유지 */
     overflow:hidden;
-    box-shadow:0 4px 15px rgba(0,0,0,0.05);
+    border-radius:4px;
+    background:#eae3d9;
+    cursor:pointer;
   }
-  .gallery-item img{
+  .gallery-item-3x3 img{
+    position:absolute;
+    top:0;
+    left:0;
     width:100%;
-    height:auto;
-    display:block;
+    height:100%;
+    object-fit:cover;
+    transition:transform 0.3s ease;
+  }
+  .gallery-item-3x3:hover img{
+    transform:scale(1.05);
+  }
+
+  /* 이미지 모달 (클릭 시 확대) */
+  .modal{
+    display:none;
+    position:fixed;
+    z-index:999;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:rgba(0,0,0,0.85);
+    justify-content:center;
+    align-items:center;
+  }
+  .modal img{
+    max-width:90%;
+    max-height:80%;
+    border-radius:6px;
+    box-shadow:0 0 20px rgba(0,0,0,0.5);
   }
 
   footer{
@@ -309,23 +337,28 @@
 
   <svg class="river-divider reveal" viewBox="0 0 400 56"><path d="M0 28 Q 50 48, 100 28 T 200 28 T 300 28 T 400 28"/></svg>
 
-  <!-- GALLERY (사진 추가 칸) -->
+  <!-- GALLERY (3x3 격자) -->
   <section class="reveal">
     <span class="label">Gallery</span>
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <img src="photo1.jpg" alt="웨딩 사진 1">
-      </div>
-      <div class="gallery-item">
-        <img src="photo2.jpg" alt="웨딩 사진 2">
-      </div>
-      <div class="gallery-item">
-        <img src="photo3.jpg" alt="웨딩 사진 3">
-      </div>
+    <div class="gallery-grid-3x3">
+      <div class="gallery-item-3x3" onclick="openModal(this)"><img src="photo1.jpg" alt="사진 1"></div>
+      <div class="gallery-item-3x3" onclick="openModal(this)"><img src="photo2.jpg" alt="사진 2"></div>
+      <div class="gallery-item-3x3" onclick="openModal(this)"><img src="photo3.jpg" alt="사진 3"></div>
+      <div class="gallery-item-3x3" onclick="openModal(this)"><img src="photo4.jpg" alt="사진 4"></div>
+      <div class="gallery-item-3x3" onclick="openModal(this)"><img src="photo5.jpg" alt="사진 5"></div>
+      <div class="gallery-item-3x3" onclick="openModal(this)"><img src="photo6.jpg" alt="사진 6"></div>
+      <div class="gallery-item-3x3" onclick="openModal(this)"><img src="photo7.jpg" alt="사진 7"></div>
+      <div class="gallery-item-3x3" onclick="openModal(this)"><img src="photo8.jpg" alt="사진 8"></div>
+      <div class="gallery-item-3x3" onclick="openModal(this)"><img src="photo9.jpg" alt="사진 9"></div>
     </div>
   </section>
 
   <footer>이원희 &nbsp;·&nbsp; 양은정 &nbsp;·&nbsp; 2026. 10. 18.</footer>
+</div>
+
+<!-- 이미지 확대 창 -->
+<div class="modal" id="imgModal" onclick="closeModal()">
+  <img id="modalImg" src="" alt="확대 이미지">
 </div>
 
 <script>
@@ -347,6 +380,16 @@
     else{ el.innerHTML = '함께해 주셔서 감사했습니다'; }
   }
   updateDday();
+
+  // 이미지 모달 열기/닫기
+  function openModal(el){
+    const src = el.querySelector('img').src;
+    document.getElementById('modalImg').src = src;
+    document.getElementById('imgModal').style.display = 'flex';
+  }
+  function closeModal(){
+    document.getElementById('imgModal').style.display = 'none';
+  }
 </script>
 </body>
 </html>
