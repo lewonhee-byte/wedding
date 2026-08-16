@@ -209,99 +209,32 @@
     letter-spacing:0.05em;
     text-align:center;
   }
-  .venue-addr{
-    font-size:13.5px;
-    color:#6d7a80;
-    line-height:1.9;
-    margin-bottom:22px;
-    text-align:center;
-  }
-  .map-links{
-    display:flex;
-    gap:10px;
-    margin-bottom:26px;
-  }
-  .map-links a{
-    flex:1;
-    text-align:center;
-    padding:12px 0;
-    font-size:12.5px;
-    letter-spacing:0.1em;
-    color:var(--ink);
-    text-decoration:none;
-    border:1px solid #ddd4c4;
-    transition:background 0.25s ease;
-  }
-  .map-links a:active, .map-links a:hover{ background:#f1ece0; }
-  .transit{
-    font-size:13px;
-    line-height:2;
-    color:#6d7a80;
-  }
-  .transit b{ color:var(--ink); font-weight:500; }
 
-  /* accounts */
-  .acc-toggle{
+  /* gallery */
+  .gallery-grid{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    margin-top:10px;
+  }
+  .gallery-item{
     width:100%;
-    padding:16px 0;
-    background:none;
-    border:1px solid #ddd4c4;
-    font-family:'Noto Serif KR', serif;
-    font-size:13.5px;
-    letter-spacing:0.1em;
-    color:var(--ink);
-    cursor:pointer;
-  }
-  .acc-body{
-    max-height:0;
+    border-radius:8px;
     overflow:hidden;
-    transition:max-height 0.4s ease;
+    box-shadow:0 4px 15px rgba(0,0,0,0.05);
   }
-  .acc-body.open{ max-height:600px; margin-top:18px; }
-  .acc-group{ margin-bottom:18px; }
-  .acc-side{
-    font-size:12px;
-    letter-spacing:0.15em;
-    color:var(--rose);
-    margin-bottom:8px;
-  }
-  .acc-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    font-size:13.5px;
-    padding:10px 0;
-    border-bottom:1px solid #ece5d8;
-    color:#3c464d;
-  }
-  .acc-row button{
-    font-family:'Noto Serif KR', serif;
-    font-size:11.5px;
-    padding:5px 10px;
-    background:none;
-    border:1px solid #cfc6b6;
-    color:#8a7e63;
-    cursor:pointer;
+  .gallery-item img{
+    width:100%;
+    height:auto;
+    display:block;
   }
 
-  /* closing */
-  .closing{
-    text-align:center;
-    padding:70px 12% 40px;
-  }
-  .closing .flower{ width:34px; height:34px; margin:0 auto 22px; opacity:0.8; }
-  .closing p{
-    font-size:13.5px;
-    line-height:2.1;
-    color:#8a9aa0;
-    letter-spacing:0.04em;
-  }
   footer{
     text-align:center;
     font-size:11px;
     letter-spacing:0.15em;
     color:#b9b0a0;
-    padding-bottom:30px;
+    padding:50px 0 30px;
   }
 </style>
 </head>
@@ -372,58 +305,27 @@
     <span class="label">Location</span>
     <div class="venue-name">더 그랜드 롯데 서울</div>
     <div class="venue-hall">무궁화 가람홀</div>
-    <div class="venue-addr">서울특별시 서초구 반포대로 234</div>
-    <div class="map-links">
-      <a href="https://map.naver.com/v5/search/%EB%8D%94%EA%B7%B8%EB%9E%99%EB%93%9C%EB%A1%AF%EB%8D%B0%EC%84%9C%EC%9A%B8" target="_blank" rel="noopener">네이버지도</a>
-      <a href="https://map.kakao.com/?q=%EB%8D%94%EA%B7%B8%EB%9E%99%EB%93%9C%EB%A1%AF%EB%8D%B0%EC%84%9C%EC%9A%B8" target="_blank" rel="noopener">카카오맵</a>
-    </div>
-    <div class="transit">
-      <b>지하철</b> — 고속터미널역 / 논현역 하차<br>
-      <b>주차</b> — 호텔 내 주차장 이용 가능
-    </div>
   </section>
 
   <svg class="river-divider reveal" viewBox="0 0 400 56"><path d="M0 28 Q 50 48, 100 28 T 200 28 T 300 28 T 400 28"/></svg>
 
-  <!-- ACCOUNTS -->
+  <!-- GALLERY (사진 추가 칸) -->
   <section class="reveal">
-    <span class="label">Gift</span>
-    <button class="acc-toggle" onclick="toggleAcc()">마음 전하실 곳 &nbsp;+</button>
-    <div class="acc-body" id="accBody">
-      <div class="acc-group">
-        <div class="acc-side">신랑측</div>
-        <div class="acc-row">
-          <span>이원희 &nbsp;|&nbsp; 카카오뱅크 3333-00-0000000</span>
-          <button onclick="copyAcc(this, '3333-00-0000000')">복사</button>
-        </div>
+    <span class="label">Gallery</span>
+    <div class="gallery-grid">
+      <!-- 메인 메인/대표 사진 -->
+      <div class="gallery-item">
+        <img src="https://via.placeholder.com/600x800" alt="웨딩 사진 1">
       </div>
-      <div class="acc-group">
-        <div class="acc-side">신부측</div>
-        <div class="acc-row">
-          <span>양은정 &nbsp;|&nbsp; 카카오뱅크 3333-00-0000000</span>
-          <button onclick="copyAcc(this, '3333-00-0000000')">복사</button>
-        </div>
+      <!-- 추가 사진 2 -->
+      <div class="gallery-item">
+        <img src="https://via.placeholder.com/600x800" alt="웨딩 사진 2">
+      </div>
+      <!-- 추가 사진 3 -->
+      <div class="gallery-item">
+        <img src="https://via.placeholder.com/600x800" alt="웨딩 사진 3">
       </div>
     </div>
-  </section>
-
-  <!-- CLOSING -->
-  <section class="closing reveal">
-    <svg class="flower" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <g fill="none" stroke="#a9895a" stroke-width="1.4">
-        <ellipse cx="50" cy="28" rx="13" ry="20"/>
-        <ellipse cx="72" cy="42" rx="13" ry="20" transform="rotate(72 72 42)"/>
-        <ellipse cx="63" cy="66" rx="13" ry="20" transform="rotate(144 63 66)"/>
-        <ellipse cx="37" cy="66" rx="13" ry="20" transform="rotate(216 37 66)"/>
-        <ellipse cx="28" cy="42" rx="13" ry="20" transform="rotate(288 28 42)"/>
-      </g>
-      <circle cx="50" cy="50" r="5" fill="#b06874"/>
-    </svg>
-    <p>
-      함께해 주시는 그 따뜻한 마음이<br>
-      저희에게는 가장 큰 선물입니다.<br><br>
-      감사합니다.
-    </p>
   </section>
 
   <footer>이원희 &nbsp;·&nbsp; 양은정 &nbsp;·&nbsp; 2026. 10. 18.</footer>
@@ -448,20 +350,6 @@
     else{ el.innerHTML = '함께해 주셔서 감사했습니다'; }
   }
   updateDday();
-
-  // accordion
-  function toggleAcc(){
-    document.getElementById('accBody').classList.toggle('open');
-  }
-
-  // copy account
-  function copyAcc(btn, number){
-    navigator.clipboard.writeText(number).then(()=>{
-      const original = btn.innerText;
-      btn.innerText = '복사됨';
-      setTimeout(()=>{ btn.innerText = original; }, 1500);
-    });
-  }
 </script>
 </body>
 </html>
