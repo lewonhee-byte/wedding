@@ -1,3 +1,400 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>이원희 & 양은정 결혼합니다</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+KR:wght@300;400;500;600&family=Pretendard:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #FAFAFA;
+            --text-main: #2C2C2C;
+            --text-sub: #666666;
+            --accent-color: #8C7355;
+            --accent-light: #F4F0EA;
+            --border-color: #E8E3DD;
+            --white: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #121212;
+            font-family: 'Noto Serif KR', serif;
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .mobile-container {
+            width: 100%;
+            max-width: 430px;
+            background-color: var(--bg-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .hero {
+            position: relative;
+            padding: 60px 24px 40px;
+            text-align: center;
+            background: var(--bg-color);
+        }
+
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 4px;
+            font-size: 14px;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .hero-title {
+            font-size: 26px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            line-height: 1.5;
+            color: var(--text-main);
+            margin-bottom: 30px;
+        }
+
+        .hero-image-container {
+            width: 100%;
+            aspect-ratio: 3/4;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            background: var(--accent-light);
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .section {
+            padding: 50px 28px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            letter-spacing: 3px;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .section-heading {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            color: var(--text-main);
+        }
+
+        .message-text {
+            font-size: 15px;
+            line-height: 2.2;
+            color: #333333;
+            font-weight: 400;
+            margin-bottom: 36px;
+        }
+
+        .date-badge {
+            display: inline-block;
+            padding: 8px 18px;
+            background: var(--accent-light);
+            color: var(--accent-color);
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: 20px;
+            margin-bottom: 24px;
+            font-family: 'Pretendard', sans-serif;
+        }
+
+        .groom-bride-names {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            font-size: 16px;
+            padding: 20px 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .name-box {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .name-title {
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+
+        .name-bold {
+            font-weight: 500;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            background: var(--accent-light);
+            border-radius: 6px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.92);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            color: #fff;
+            font-size: 32px;
+            cursor: pointer;
+            z-index: 10001;
+            line-height: 1;
+        }
+
+        .modal-body {
+            position: relative;
+            width: 100%;
+            max-width: 430px;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-img-wrapper {
+            width: 90%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-img-wrapper img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: background 0.2s;
+            user-select: none;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .nav-prev {
+            left: 12px;
+        }
+
+        .nav-next {
+            right: 12px;
+        }
+
+        .modal-counter {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            font-family: 'Pretendard', sans-serif;
+            margin-top: 16px;
+        }
+
+        .footer {
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            font-family: 'Pretendard', sans-serif;
+            border-top: 1px solid var(--border-color);
+            background: #FAFAFA;
+        }
+    </style>
+</head>
+<body>
+
+<div class="mobile-container">
+
+    <div class="hero">
+        <div class="hero-subtitle">We Are Getting Married</div>
+        <div class="hero-title">
+            이원희 <span style="font-size: 18px; color: var(--accent-color); font-weight: 300;">&</span> 양은정
+        </div>
+
+        <div class="hero-image-container">
+            <img src="./photo1.jpg" alt="이원희 양은정 메인 사진" onerror="this.src='https://via.placeholder.com/600x800?text=photo1.jpg'">
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Our Story</div>
+        <div class="section-heading">우리 결혼합니다!</div>
+        
+        <div class="date-badge">
+            📅 예식일: 2026년 00월 00일
+        </div>
+
+        <div class="message-text">
+            가화만사성, 화목한 가정이 최고라는 생각으로<br>
+            늘 웃음 가득하게 잘 살아보려고 합니다.<br><br>
+            저희 두 사람 결혼한다는 소식 전해드리며,<br>
+            서로 아끼며 재미있게 행복하게 살겠습니다! 🤍
+        </div>
+
+        <div class="groom-bride-names">
+            <div class="name-box">
+                <span class="name-title">신랑</span>
+                <span class="name-bold">이원희</span>
+            </div>
+            <span style="color: var(--border-color);">|</span>
+            <div class="name-box">
+                <span class="name-title">신부</span>
+                <span class="name-bold">양은정</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" style="background: #FDFCFB;">
+        <div class="section-title">Gallery</div>
+        <div class="section-heading">소중한 순간들</div>
+        
+        <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+
+    <div class="footer">
+        이원희 ♥ 양은정<br>
+        축하해 주셔서 감사합니다!
+    </div>
+
+</div>
+
+<div class="modal" id="photoModal">
+    <span class="modal-close" onclick="closeModal()">&times;</span>
+    <div class="modal-body">
+        <button class="nav-btn nav-prev" onclick="prevSlide()">&#10094;</button>
+        <div class="modal-img-wrapper">
+            <img id="modalImg" src="" alt="확대 사진">
+        </div>
+        <button class="nav-btn nav-next" onclick="nextSlide()">&#10095;</button>
+    </div>
+    <div class="modal-counter" id="modalCounter">1 / 9</div>
+</div>
+
+<script>
+    const imageList = Array.from({length: 9}, (_, i) => `./photo${i + 1}.jpg`);
+    let currentIndex = 0;
+
+    const galleryGrid = document.getElementById('galleryGrid');
+    const photoModal = document.getElementById('photoModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalCounter = document.getElementById('modalCounter');
+
+    imageList.forEach((src, idx) => {
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        item.onclick = () => openModal(idx);
+
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = `갤러리 사진 ${idx + 1}`;
+        img.onerror = function() {
+            this.src = `https://via.placeholder.com/300x300?text=photo${idx+1}.jpg`;
+        };
+
+        item.appendChild(img);
+        galleryGrid.appendChild(item);
+    });
+
+    function openModal(index) {
+        currentIndex = index;
+        updateModalImage();
+        photoModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        photoModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    function updateModalImage() {
+        modalImg.src = imageList[currentIndex];
+        modalCounter.textContent = `${currentIndex + 1} / ${imageList.length}`;
+    }
+
     function prevSlide() {
         currentIndex = (currentIndex - 1 + imageList.length) % imageList.length;
         updateModalImage();
