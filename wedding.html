@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>이원희 · 양은정 결혼식에 초대합니다</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Song+Myung&family=Noto+Serif+KR:wght@200;300;400;500;600&family=Cormorant+Garamond:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#232f37;
+    --river:#5c7a82;
+    --river-light:#a9c0c4;
+    --rose:#b06874;
+    --rose-soft:#e7c9cc;
+    --ivory:#f7f2ea;
+    --gold:#a9895a;
+    --paper:#fdfbf7;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ivory);
+    color:var(--ink);
+    font-family:'Noto Serif KR', serif;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .frame{
+    max-width:480px;
+    margin:0 auto;
+    background:var(--paper);
+    min-height:100vh;
+    box-shadow:0 0 60px rgba(35,47,55,0.08);
+    position:relative;
+  }
+
+  /* ---------- reveal ---------- */
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity 1s ease, transform 1s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    padding:20vh 10% 8vh;
+    text-align:center;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+  }
+  .hero-eyebrow{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    letter-spacing:0.35em;
+    font-size:12px;
+    color:var(--river);
+    text-transform:uppercase;
+    margin-bottom:28px;
+  }
+  .flower{ width:46px; height:46px; margin-bottom:26px; opacity:0.9; }
+  .hero-names{
+    font-family:'Song Myung', serif;
+    font-size:34px;
+    line-height:1.6;
+    color:var(--ink);
+    letter-spacing:0.04em;
+  }
+  .hero-and{
+    display:block;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:15px;
+    color:var(--rose);
+    margin:10px 0;
+    letter-spacing:0.2em;
+  }
+  .hero-date{
+    margin-top:34px;
+    font-size:14px;
+    letter-spacing:0.25em;
+    color:var(--river);
+  }
+  .hero-venue{
+    margin-top:6px;
+    font-size:13px;
+    letter-spacing:0.15em;
+    color:#8a9aa0;
+  }
+  .scroll-cue{
+    position:absolute;
+    bottom:36px;
+    left:50%;
+    transform:translateX(-50%);
+    width:1px;
+    height:46px;
+    background:linear-gradient(to bottom, transparent, var(--river-light) 40%, transparent);
+  }
+  .scroll-cue::after{
+    content:"";
+    position:absolute;
+    left:-2px; top:0;
+    width:5px; height:5px;
+    border-radius:50%;
+    background:var(--rose);
+    animation:drip 2.4s ease-in-out infinite;
+  }
+  @keyframes drip{
+    0%{ top:0; opacity:0; }
+    15%{ opacity:1; }
+    85%{ opacity:1; }
+    100%{ top:42px; opacity:0; }
+  }
+
+  /* ---------- river divider (signature element) ---------- */
+  .river-divider{ width:100%; height:56px; display:block; }
+  .river-divider path{
+    stroke:var(--river-light);
+    stroke-width:1;
+    fill:none;
+    stroke-dasharray:600;
+    stroke-dashoffset:600;
+    transition:stroke-dashoffset 1.8s ease;
+  }
+  .river-divider.in path{ stroke-dashoffset:0; }
+
+  /* ---------- sections ---------- */
+  section{ padding:64px 11% 8px; }
+  .label{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:12px;
+    letter-spacing:0.3em;
+    color:var(--rose);
+    text-transform:uppercase;
+    margin-bottom:18px;
+    display:block;
+  }
+
+  /* greeting */
+  .greeting p{
+    font-size:15.5px;
+    line-height:2.05;
+    color:#3c464d;
+    letter-spacing:0.02em;
+  }
+  .greeting .signoff{
+    margin-top:36px;
+    font-size:14px;
+    line-height:2;
+    color:var(--ink);
+  }
+  .greeting .signoff b{ font-weight:500; }
+
+  /* date/time card */
+  .when-card{
+    border:1px solid #e5ded2;
+    padding:34px 26px;
+    text-align:center;
+    background:linear-gradient(180deg, #fff, #fbf8f2);
+  }
+  .when-year{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:13px;
+    color:var(--river);
+    letter-spacing:0.2em;
+  }
+  .when-day{
+    font-family:'Song Myung', serif;
+    font-size:40px;
+    margin:10px 0 6px;
+    color:var(--ink);
+  }
+  .when-sub{
+    font-size:13px;
+    color:#8a9aa0;
+    letter-spacing:0.12em;
+  }
+  .dday{
+    margin-top:22px;
+    padding-top:22px;
+    border-top:1px solid #ece5d8;
+    font-size:12px;
+    letter-spacing:0.15em;
+    color:var(--rose);
+  }
+  .dday span{ font-family:'Cormorant Garamond', serif; font-size:16px; margin-left:4px; }
+
+  /* location */
+  .venue-name{
+    font-family:'Song Myung', serif;
+    font-size:21px;
+    color:var(--ink);
+    margin-bottom:8px;
+  }
+  .venue-hall{
+    font-size:14px;
+    color:var(--rose);
+    margin-bottom:18px;
+    letter-spacing:0.05em;
+  }
+  .venue-addr{
+    font-size:13.5px;
+    color:#6d7a80;
+    line-height:1.9;
+    margin-bottom:22px;
+  }
+  .map-links{
+    display:flex;
+    gap:10px;
+    margin-bottom:26px;
+  }
+  .map-links a{
+    flex:1;
+    text-align:center;
+    padding:12px 0;
+    font-size:12.5px;
+    letter-spacing:0.1em;
+    color:var(--ink);
+    text-decoration:none;
+    border:1px solid #ddd4c4;
+    transition:background 0.25s ease;
+  }
+  .map-links a:active, .map-links a:hover{ background:#f1ece0; }
+  .transit{
+    font-size:13px;
+    line-height:2;
+    color:#6d7a80;
+  }
+  .transit b{ color:var(--ink); font-weight:500; }
+
+  /* accounts */
+  .acc-toggle{
+    width:100%;
+    padding:16px 0;
+    background:none;
+    border:1px solid #ddd4c4;
+    font-family:'Noto Serif KR', serif;
+    font-size:13.5px;
+    letter-spacing:0.1em;
+    color:var(--ink);
+    cursor:pointer;
+  }
+  .acc-body{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.4s ease;
+  }
+  .acc-body.open{ max-height:600px; margin-top:18px; }
+  .acc-group{ margin-bottom:18px; }
+  .acc-side{
+    font-size:12px;
+    letter-spacing:0.15em;
+    color:var(--rose);
+    margin-bottom:8px;
+  }
+  .acc-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:13.5px;
+    padding:10px 0;
+    border-bottom:1px solid #ece5d8;
+    color:#3c464d;
+  }
+  .acc-row button{
+    font-family:'Noto Serif KR', serif;
+    font-size:11.5px;
+    padding:5px 10px;
+    background:none;
+    border:1px solid #cfc6b6;
+    color:#8a7e63;
+    cursor:pointer;
+  }
+
+  /* closing */
+  .closing{
+    text-align:center;
+    padding:70px 12% 40px;
+  }
+  .closing .flower{ width:34px; height:34px; margin:0 auto 22px; opacity:0.8; }
+  .closing p{
+    font-size:13.5px;
+    line-height:2.1;
+    color:#8a9aa0;
+    letter-spacing:0.04em;
+  }
+  footer{
+    text-align:center;
+    font-size:11px;
+    letter-spacing:0.15em;
+    color:#b9b0a0;
+    padding-bottom:30px;
+  }
+
+  .note{
+    font-size:11px;
+    color:#c2a68f;
+    text-align:center;
+    letter-spacing:0.05em;
+    margin-top:10px;
+  }
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="hero-eyebrow">Wedding Invitation</span>
+    <svg class="flower" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke="#b06874" stroke-width="1.4">
+        <ellipse cx="50" cy="28" rx="13" ry="20"/>
+        <ellipse cx="72" cy="42" rx="13" ry="20" transform="rotate(72 72 42)"/>
+        <ellipse cx="63" cy="66" rx="13" ry="20" transform="rotate(144 63 66)"/>
+        <ellipse cx="37" cy="66" rx="13" ry="20" transform="rotate(216 37 66)"/>
+        <ellipse cx="28" cy="42" rx="13" ry="20" transform="rotate(288 28 42)"/>
+      </g>
+      <circle cx="50" cy="50" r="5" fill="#a9895a"/>
+    </svg>
+    <h1 class="hero-names">
+      이원희
+      <span class="hero-and">그리고</span>
+      양은정
+    </h1>
+    <div class="hero-date">2026. 10. 18. SUN &nbsp;12:00 PM</div>
+    <div class="hero-venue">더 그랜드 롯데 서울 · 무궁화 가람홀</div>
+    <div class="scroll-cue"></div>
+  </section>
+
+  <svg class="river-divider" viewBox="0 0 400 56"><path d="M0 28 Q 50 8, 100 28 T 200 28 T 300 28 T 400 28"/></svg>
+
+  <!-- GREETING -->
+  <section class="greeting reveal">
+    <span class="label">Invitation</span>
+    <p>
+      가람은 강을 뜻하는 옛말입니다.<br>
+      각자 다른 곳에서 흘러온 두 사람이<br>
+      이제 하나의 물줄기가 되어<br>
+      같은 방향을 바라보려 합니다.
+    </p>
+    <p style="margin-top:22px;">
+      저희 두 사람이 걸어갈 첫걸음에<br>
+      귀한 걸음 하시어<br>
+      따뜻한 마음으로 축복해 주시면<br>
+      감사하겠습니다.
+    </p>
+    <div class="signoff">
+      <b>이◯◯ · 김◯◯</b>의 아들 <b>원희</b><br>
+      <b>양◯◯ · 최◯◯</b>의 딸 <b>은정</b>
+    </div>
+    <div class="note">※ 양가 부모님 성함은 확인 후 기재해 드릴게요</div>
+  </section>
+
+  <svg class="river-divider reveal" viewBox="0 0 400 56"><path d="M0 28 Q 50 48, 100 28 T 200 28 T 300 28 T 400 28"/></svg>
+
+  <!-- DATE -->
+  <section class="reveal">
+    <span class="label">Date &amp; Time</span>
+    <div class="when-card">
+      <div class="when-year">2026</div>
+      <div class="when-day">10 . 18</div>
+      <div class="when-sub">SUNDAY &nbsp;·&nbsp; 12:00 PM</div>
+      <div class="dday" id="ddayText">D-day 계산 중</div>
+    </div>
+  </section>
+
+  <svg class="river-divider reveal" viewBox="0 0 400 56"><path d="M0 28 Q 50 8, 100 28 T 200 28 T 300 28 T 400 28"/></svg>
+
+  <!-- LOCATION -->
+  <section class="reveal">
+    <span class="label">Location</span>
+    <div class="venue-name">더 그랜드 롯데 서울</div>
+    <div class="venue-hall">무궁화 가람홀</div>
+    <div class="venue-addr">서울특별시 서초구 반포대로 234<br>더 그랜드 롯데 서울</div>
+    <div class="map-links">
+      <a href="https://map.naver.com/p/search/더그랜드롯데서울" target="_blank" rel="noopener">네이버지도</a>
+      <a href="https://map.kakao.com/?q=더그랜드롯데서울" target="_blank" rel="noopener">카카오맵</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=더그랜드롯데서울" target="_blank" rel="noopener">구글지도</a>
+    </div>
+    <div class="transit">
+      <b>지하철</b> — 고속터미널역 / 논현역 (안내 확인 후 업데이트)<br>
+      <b>주차</b> — 호텔 발렛 주차 및 자체 주차장 이용 가능<br>
+      <b>셔틀</b> — 필요 시 별도 안내 예정
+    </div>
+    <div class="note">※ 교통·주차 상세 안내는 추후 업데이트해 드릴게요</div>
+  </section>
+
+  <svg class="river-divider reveal" viewBox="0 0 400 56"><path d="M0 28 Q 50 48, 100 28 T 200 28 T 300 28 T 400 28"/></svg>
+
+  <!-- ACCOUNTS -->
+  <section class="reveal">
+    <span class="label">Gift</span>
+    <button class="acc-toggle" onclick="toggleAcc()">마음 전하실 곳 &nbsp;+</button>
+    <div class="acc-body" id="accBody">
+      <div class="acc-group">
+        <div class="acc-side">신랑측</div>
+        <div class="acc-row">
+          <span>이원희 &nbsp;|&nbsp; ◯◯은행 000-000-000000</span>
+          <button onclick="copyAcc(this)">복사</button>
+        </div>
+      </div>
+      <div class="acc-group">
+        <div class="acc-side">신부측</div>
+        <div class="acc-row">
+          <span>양은정 &nbsp;|&nbsp; ◯◯은행 000-000-000000</span>
+          <button onclick="copyAcc(this)">복사</button>
+        </div>
+      </div>
+    </div>
+    <div class="note">※ 계좌 정보 알려주시면 실제 정보로 채워 드릴게요</div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="closing reveal">
+    <svg class="flower" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke="#a9895a" stroke-width="1.4">
+        <ellipse cx="50" cy="28" rx="13" ry="20"/>
+        <ellipse cx="72" cy="42" rx="13" ry="20" transform="rotate(72 72 42)"/>
+        <ellipse cx="63" cy="66" rx="13" ry="20" transform="rotate(144 63 66)"/>
+        <ellipse cx="37" cy="66" rx="13" ry="20" transform="rotate(216 37 66)"/>
+        <ellipse cx="28" cy="42" rx="13" ry="20" transform="rotate(288 28 42)"/>
+      </g>
+      <circle cx="50" cy="50" r="5" fill="#b06874"/>
+    </svg>
+    <p>
+      멀리서도, 가까이서도<br>
+      함께해 주시는 그 마음이<br>
+      저희에게는 가장 큰 선물입니다.<br><br>
+      감사합니다.
+    </p>
+  </section>
+
+  <footer>이원희 &nbsp;·&nbsp; 양은정 &nbsp;·&nbsp; 2026. 10. 18.</footer>
+</div>
+
+<script>
+  // reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
+  }, { threshold: 0.2 });
+  reveals.forEach(el=>io.observe(el));
+
+  // d-day
+  function updateDday(){
+    const target = new Date('2026-10-18T12:00:00+09:00');
+    const now = new Date();
+    const diff = Math.ceil((target - now) / (1000*60*60*24));
+    const el = document.getElementById('ddayText');
+    if(diff > 0){ el.innerHTML = '결혼식까지 <span>' + diff + '</span>일'; }
+    else if(diff === 0){ el.innerHTML = '오늘, 두 사람이 하나가 됩니다'; }
+    else{ el.innerHTML = '함께해 주셔서 감사했습니다'; }
+  }
+  updateDday();
+
+  // accordion
+  function toggleAcc(){
+    document.getElementById('accBody').classList.toggle('open');
+  }
+
+  // copy account
+  function copyAcc(btn){
+    const text = btn.parentElement.querySelector('span').innerText;
+    navigator.clipboard && navigator.clipboard.writeText(text).catch(()=>{});
+    const original = btn.innerText;
+    btn.innerText = '복사됨';
+    setTimeout(()=>{ btn.innerText = original; }, 1500);
+  }
+</script>
+</body>
+</html>
