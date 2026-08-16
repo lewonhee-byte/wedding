@@ -45,7 +45,7 @@
   /* ---------- hero ---------- */
   .hero{
     position:relative;
-    padding:20vh 10% 8vh;
+    padding:15vh 10% 8vh;
     text-align:center;
     min-height:100vh;
     display:flex;
@@ -116,7 +116,7 @@
     100%{ top:42px; opacity:0; }
   }
 
-  /* ---------- river divider (signature element) ---------- */
+  /* ---------- river divider ---------- */
   .river-divider{ width:100%; height:56px; display:block; }
   .river-divider path{
     stroke:var(--river-light);
@@ -139,6 +139,7 @@
     text-transform:uppercase;
     margin-bottom:18px;
     display:block;
+    text-align:center;
   }
 
   /* greeting */
@@ -147,12 +148,14 @@
     line-height:2.05;
     color:#3c464d;
     letter-spacing:0.02em;
+    text-align:center;
   }
   .greeting .signoff{
     margin-top:36px;
     font-size:14px;
     line-height:2;
     color:var(--ink);
+    text-align:center;
   }
   .greeting .signoff b{ font-weight:500; }
 
@@ -197,18 +200,21 @@
     font-size:21px;
     color:var(--ink);
     margin-bottom:8px;
+    text-align:center;
   }
   .venue-hall{
     font-size:14px;
     color:var(--rose);
     margin-bottom:18px;
     letter-spacing:0.05em;
+    text-align:center;
   }
   .venue-addr{
     font-size:13.5px;
     color:#6d7a80;
     line-height:1.9;
     margin-bottom:22px;
+    text-align:center;
   }
   .map-links{
     display:flex;
@@ -297,14 +303,6 @@
     color:#b9b0a0;
     padding-bottom:30px;
   }
-
-  .note{
-    font-size:11px;
-    color:#c2a68f;
-    text-align:center;
-    letter-spacing:0.05em;
-    margin-top:10px;
-  }
 </style>
 </head>
 <body>
@@ -339,7 +337,6 @@
   <section class="greeting reveal">
     <span class="label">Invitation</span>
     <p>
-      가람은 강을 뜻하는 옛말입니다.<br>
       각자 다른 곳에서 흘러온 두 사람이<br>
       이제 하나의 물줄기가 되어<br>
       같은 방향을 바라보려 합니다.
@@ -351,10 +348,8 @@
       감사하겠습니다.
     </p>
     <div class="signoff">
-      <b>이◯◯ · 김◯◯</b>의 아들 <b>원희</b><br>
-      <b>양◯◯ · 최◯◯</b>의 딸 <b>은정</b>
+      신랑 <b>이원희</b> &nbsp;·&nbsp; 신부 <b>양은정</b>
     </div>
-    <div class="note">※ 양가 부모님 성함은 확인 후 기재해 드릴게요</div>
   </section>
 
   <svg class="river-divider reveal" viewBox="0 0 400 56"><path d="M0 28 Q 50 48, 100 28 T 200 28 T 300 28 T 400 28"/></svg>
@@ -377,18 +372,15 @@
     <span class="label">Location</span>
     <div class="venue-name">더 그랜드 롯데 서울</div>
     <div class="venue-hall">무궁화 가람홀</div>
-    <div class="venue-addr">서울특별시 서초구 반포대로 234<br>더 그랜드 롯데 서울</div>
+    <div class="venue-addr">서울특별시 서초구 반포대로 234</div>
     <div class="map-links">
-      <a href="https://map.naver.com/p/search/더그랜드롯데서울" target="_blank" rel="noopener">네이버지도</a>
-      <a href="https://map.kakao.com/?q=더그랜드롯데서울" target="_blank" rel="noopener">카카오맵</a>
-      <a href="https://www.google.com/maps/search/?api=1&query=더그랜드롯데서울" target="_blank" rel="noopener">구글지도</a>
+      <a href="https://map.naver.com/v5/search/%EB%8D%94%EA%B7%B8%EB%9E%99%EB%93%9C%EB%A1%AF%EB%8D%B0%EC%84%9C%EC%9A%B8" target="_blank" rel="noopener">네이버지도</a>
+      <a href="https://map.kakao.com/?q=%EB%8D%94%EA%B7%B8%EB%9E%99%EB%93%9C%EB%A1%AF%EB%8D%B0%EC%84%9C%EC%9A%B8" target="_blank" rel="noopener">카카오맵</a>
     </div>
     <div class="transit">
-      <b>지하철</b> — 고속터미널역 / 논현역 (안내 확인 후 업데이트)<br>
-      <b>주차</b> — 호텔 발렛 주차 및 자체 주차장 이용 가능<br>
-      <b>셔틀</b> — 필요 시 별도 안내 예정
+      <b>지하철</b> — 고속터미널역 / 논현역 하차<br>
+      <b>주차</b> — 호텔 내 주차장 이용 가능
     </div>
-    <div class="note">※ 교통·주차 상세 안내는 추후 업데이트해 드릴게요</div>
   </section>
 
   <svg class="river-divider reveal" viewBox="0 0 400 56"><path d="M0 28 Q 50 48, 100 28 T 200 28 T 300 28 T 400 28"/></svg>
@@ -401,19 +393,18 @@
       <div class="acc-group">
         <div class="acc-side">신랑측</div>
         <div class="acc-row">
-          <span>이원희 &nbsp;|&nbsp; ◯◯은행 000-000-000000</span>
-          <button onclick="copyAcc(this)">복사</button>
+          <span>이원희 &nbsp;|&nbsp; 카카오뱅크 3333-00-0000000</span>
+          <button onclick="copyAcc(this, '3333-00-0000000')">복사</button>
         </div>
       </div>
       <div class="acc-group">
         <div class="acc-side">신부측</div>
         <div class="acc-row">
-          <span>양은정 &nbsp;|&nbsp; ◯◯은행 000-000-000000</span>
-          <button onclick="copyAcc(this)">복사</button>
+          <span>양은정 &nbsp;|&nbsp; 카카오뱅크 3333-00-0000000</span>
+          <button onclick="copyAcc(this, '3333-00-0000000')">복사</button>
         </div>
       </div>
     </div>
-    <div class="note">※ 계좌 정보 알려주시면 실제 정보로 채워 드릴게요</div>
   </section>
 
   <!-- CLOSING -->
@@ -429,8 +420,7 @@
       <circle cx="50" cy="50" r="5" fill="#b06874"/>
     </svg>
     <p>
-      멀리서도, 가까이서도<br>
-      함께해 주시는 그 마음이<br>
+      함께해 주시는 그 따뜻한 마음이<br>
       저희에게는 가장 큰 선물입니다.<br><br>
       감사합니다.
     </p>
@@ -465,12 +455,12 @@
   }
 
   // copy account
-  function copyAcc(btn){
-    const text = btn.parentElement.querySelector('span').innerText;
-    navigator.clipboard && navigator.clipboard.writeText(text).catch(()=>{});
-    const original = btn.innerText;
-    btn.innerText = '복사됨';
-    setTimeout(()=>{ btn.innerText = original; }, 1500);
+  function copyAcc(btn, number){
+    navigator.clipboard.writeText(number).then(()=>{
+      const original = btn.innerText;
+      btn.innerText = '복사됨';
+      setTimeout(()=>{ btn.innerText = original; }, 1500);
+    });
   }
 </script>
 </body>
