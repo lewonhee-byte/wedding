@@ -179,41 +179,7 @@ section{padding:62px 16px}
 .account-detail{font-size:13px;line-height:1.6;color:#333}
 .copy-btn{background:var(--green);color:#fff;border:none;padding:4px 8px;font-size:10px;cursor:pointer;letter-spacing:.05em}
 
-.guestbook{background:#fff;border-top:1px solid var(--ink)}
-.guestbook h2{margin:0 0 20px;font-size:40px;letter-spacing:-.06em}
-.gb-form{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
-.gb-form input, .gb-form textarea{
-  width:100%;padding:10px;border:1px solid var(--line);background:var(--paper);font-family:inherit;font-size:14px;
-}
-.gb-form textarea{resize:vertical;min-height:80px}
-.gb-submit{background:var(--ink);color:#fff;border:none;padding:12px;font-size:12px;cursor:pointer;letter-spacing:.1em;text-transform:uppercase}
-.gb-list{display:flex;flex-direction:column;gap:10px}
-.gb-item{background:var(--paper);padding:12px;border-left:3px solid var(--green);font-size:13px;line-height:1.5}
-.gb-item .gb-info{display:flex;justify-content:space-between;font-size:10px;color:#666;margin-bottom:4px;letter-spacing:.05em}
-
-.location{background:var(--green);color:#fff}
-.location .section-head{border-color:#fff}
-.location h2{
-  margin:0 0 28px;font-size:52px;line-height:.88;letter-spacing:-.06em
-}
-.addr{font-size:16px;line-height:1.8;margin-bottom:24px}
-.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.btn{
-  border:1px solid #fff;color:#fff;background:transparent;padding:13px 10px;
-  font-size:12px;text-decoration:none;text-align:center;cursor:pointer
-}
-
-.closing{
-  min-height:82svh;position:relative;display:flex;flex-direction:column;justify-content:space-between;background:var(--paper);padding:62px 16px
-}
-.closing h2{margin:0;font-size:54px;line-height:.92;letter-spacing:-.06em;width:90%}
-.closing .date2{margin-top:42px;font-size:92px;line-height:.78;letter-spacing:-.09em;font-weight:800;color:var(--green)}
-.closing .names{margin-top:18px;font-size:14px;letter-spacing:.04em}
-.closing .hanja{
-  position:absolute;right:-8px;bottom:4px;writing-mode:vertical-rl;
-  font-family:Georgia,"Times New Roman",serif;font-size:64px;line-height:.8;color:rgba(13,91,57,.16)
-}
-.footer{padding:18px 16px;background:#fff;font-size:9px;letter-spacing:.12em;text-transform:uppercase}
+.footer{padding:18px 16px;background:#fff;font-size:9px;letter-spacing:.12em;text-transform:uppercase;border-top:1px solid var(--ink)}
 
 /* Modal for Image Preview */
 #imageModal{
@@ -385,47 +351,14 @@ section{padding:62px 16px}
   <div class="section-head"><span>04</span><span>Account / 마음 전하실 곳</span></div>
   <div style="padding: 24px 16px;">
     <div class="account-box">
-      <div class="account-title"><span>신랑 이원희</span> <button class="copy-btn" onclick="copyAccount('신한 110-229-952230', this)">계좌 복사</button></div>
+      <div class="account-title"><span>신랑 이원희</span> <button class="copy-btn" onclick="copyAccount('국민 123456-04-123456', this)">계좌 복사</button></div>
       <div class="account-detail">국민은행 123456-04-123456<br>예금주: 이원희</div>
     </div>
     <div class="account-box" style="margin-bottom:0;">
-      <div class="account-title"><span>신부 양은정</span> <button class="copy-btn" onclick="copyAccount('신한 110-339-952230', this)">계좌 복사</button></div>
+      <div class="account-title"><span>신부 양은정</span> <button class="copy-btn" onclick="copyAccount('신한 110-123-456789', this)">계좌 복사</button></div>
       <div class="account-detail">신한은행 110-123-456789<br>예금주: 양은정</div>
     </div>
   </div>
-</section>
-
-<section class="guestbook">
-  <div class="section-head"><span>05</span><span>Guestbook / 축하 메시지</span></div>
-  <div style="padding: 0 16px;">
-    <h2>축하의 말을<br>남겨주세요</h2>
-    <div class="gb-form">
-      <input type="text" id="writerName" placeholder="성함">
-      <textarea id="writerMsg" placeholder="따뜻한 축하의 말씀을 남겨주세요."></textarea>
-      <button class="gb-submit" onclick="addMessage()">메시지 남기기</button>
-    </div>
-    <div class="gb-list" id="gbList"></div>
-  </div>
-</section>
-
-<section class="location">
-  <div class="section-head"><span>06</span><span>Location</span></div>
-  <h2>LOTTE<br>HOTEL<br>SEOUL</h2>
-  <div class="addr">롯데호텔 서울<br>무궁화 · 가람홀<br><br>서울특별시 중구 을지로 30</div>
-  <div class="actions">
-    <a class="btn" href="https://map.naver.com/p/search/%EB%A1%AF%EB%8D%B0%ED%98%B8%ED%85%94%20%EC%84%9C%EC%9A%B8" target="_blank" rel="noopener">지도 보기</a>
-    <button class="btn" onclick="copyAddress()">주소 복사</button>
-  </div>
-</section>
-
-<section class="closing">
-  <div>
-    <div class="section-head"><span>07</span><span>See You There</span></div>
-    <h2>우리의 시작에<br>함께해 주세요.</h2>
-    <div class="date2">10.18</div>
-    <div class="names">2026 · SUNDAY · 12:00 PM<br>이원희 &amp; 양은정</div>
-  </div>
-  <div class="hanja">家和萬事成</div>
 </section>
 
 <div class="footer">© 2026 WONHEE LEE × EUNJEONG YANG · WEDDING INVITATION</div>
@@ -437,12 +370,6 @@ section{padding:62px 16px}
 </div>
 
 <script>
-function copyAddress(){
-  const text="서울특별시 중구 을지로 30";
-  navigator.clipboard.writeText(text).then(()=>alert("주소를 복사했습니다."))
-  .catch(()=>window.prompt("주소를 복사해 주세요.",text));
-}
-
 function copyAccount(acc, btn){
   navigator.clipboard.writeText(acc).then(()=>{
     const orig = btn.innerText;
@@ -461,52 +388,6 @@ document.querySelectorAll('.wrap img').forEach(img => {
 function closeModal(){
   document.getElementById('imageModal').style.display = 'none';
 }
-
-// Guestbook (LocalStorage)
-function loadMessages(){
-  const list = document.getElementById('gbList');
-  const msgs = JSON.parse(localStorage.getItem('wedding_gb') || '[]');
-  list.innerHTML = '';
-  if(msgs.length === 0){
-    list.innerHTML = '<div style="font-size:12px;color:#666;text-align:center;padding:20px;">첫 번째 축하 메시지를 남겨주세요!</div>';
-    return;
-  }
-  msgs.forEach(m => {
-    const div = document.createElement('div');
-    div.className = 'gb-item';
-    div.innerHTML = `<div class="gb-info"><span><b>${escapeHtml(m.name)}</b></span><span>${m.date}</span></div><div>${escapeHtml(m.msg)}</div>`;
-    list.appendChild(div);
-  });
-}
-
-function addMessage(){
-  const nameInput = document.getElementById('writerName');
-  const msgInput = document.getElementById('writerMsg');
-  const name = nameInput.value.trim();
-  const msg = msgInput.value.trim();
-
-  if(!name || !msg){
-    alert('성함과 메시지를 모두 입력해주세요.');
-    return;
-  }
-
-  const msgs = JSON.parse(localStorage.getItem('wedding_gb') || '[]');
-  const now = new Date();
-  const dateStr = `${now.getFullYear()}.${String(now.getMonth()+1).padStart(2,'0')}.${String(now.getDate()).padStart(2,'0')}`;
-  
-  msgs.unshift({name, msg, date: dateStr});
-  localStorage.setItem('wedding_gb', JSON.stringify(msgs));
-
-  nameInput.value = '';
-  msgInput.value = '';
-  loadMessages();
-}
-
-function escapeHtml(str){
-  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
-}
-
-document.addEventListener('DOMContentLoaded', loadMessages);
 </script>
 </body>
 </html>
