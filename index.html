@@ -4,467 +4,509 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>가화만사성 — 이원희 & 양은정</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#f7f6f0;
-  --ink:#141614;
+  --paper:#f5f4ef;
+  --ink:#111311;
   --green:#0d5b39;
-  --forest:#183628;
-  --line:rgba(20,22,20,.15);
+  --forest:#214234;
+  --line:rgba(17,19,17,.18);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  margin:0; background:#e4e3dc; color:var(--ink);
-  font-family:'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
-  -webkit-font-smoothing: antialiased;
+  margin:0;background:#929292;color:var(--ink);
+  font-family:Arial,Helvetica,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
 }
 .wrap{
-  width:100%; max-width:540px; margin:0 auto; background:var(--paper); overflow:hidden;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+  width:min(100%,540px);margin:0 auto;background:var(--paper);overflow:hidden;
 }
-@media(min-width:541px){
-  body { padding: 30px 0; }
-  .wrap { border-radius: 24px; }
+header.hero{
+  min-height:100svh;padding:16px 16px 24px;
+  display:grid;grid-template-rows:auto 1fr auto;
+}
+.micro{
+  font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+}
+.topline{
+  display:flex;justify-content:space-between;gap:14px;
+  padding-bottom:8px;border-bottom:1px solid var(--line);
+}
+.hero-grid{
+  display:grid;grid-template-columns:.88fr 1.12fr;gap:12px;padding-top:14px;min-height:0;
+}
+.hero-type{display:flex;flex-direction:column;justify-content:space-between;min-width:0}
+.hero-title{
+  margin:0;font-size:clamp(54px,16vw,88px);font-weight:800;
+  line-height:.78;letter-spacing:-.08em;text-transform:uppercase;
+}
+.hero-title span{display:block}
+.hero-side{
+  writing-mode:vertical-rl;transform:rotate(180deg);
+  font-size:12px;letter-spacing:.12em;margin-top:10px;
+}
+.hero-photo{
+  position:relative;overflow:hidden;min-height:0;
+}
+.hero-photo img{
+  width:100%;height:100%;object-fit:cover;object-position:45% 50%;display:block;
+}
+.stamp{
+  position:absolute;right:8px;top:8px;background:var(--green);color:#fff;
+  padding:9px 10px;font-size:10px;line-height:1.2;font-weight:700;text-transform:uppercase;
+  transform:rotate(2deg)
+}
+.hero-bottom{
+  margin-top:18px;border-top:1px solid var(--ink);padding-top:12px;
+  display:grid;grid-template-columns:1fr auto;align-items:end;gap:14px
+}
+.bigdate{font-size:84px;line-height:.78;letter-spacing:-.08em;font-weight:800}
+.hero-meta{font-size:10px;line-height:1.65;letter-spacing:.12em;text-transform:uppercase;text-align:right}
+
+section{padding:62px 16px}
+.section-head{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:12px;
+  border-top:1px solid var(--ink);padding-top:8px;margin-bottom:26px;
+  font-size:10px;letter-spacing:.15em;text-transform:uppercase
+}
+.invite{background:#fff;position:relative}
+.invite h2{
+  margin:0 0 34px;font-size:44px;line-height:.92;letter-spacing:-.06em
+}
+.invite p{
+  margin:0 0 0 auto;width:84%;font-size:16px;line-height:1.95;letter-spacing:-.02em
+}
+.invite .vert{
+  position:absolute;left:-2px;top:166px;writing-mode:vertical-rl;transform:rotate(180deg);
+  color:var(--green);font-size:46px;font-weight:800;letter-spacing:-.06em;line-height:.8
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--paper); }
-::-webkit-scrollbar-thumb { background: var(--green); border-radius: 2px; }
+/* editorial full-bleed sequence */
+.sequence{padding:0;background:var(--paper)}
+.full{
+  position:relative;min-height:74svh;overflow:hidden;
+}
+.full img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.full .overlay{
+  position:absolute;inset:auto 0 0 0;padding:18px 16px 20px;
+  background:linear-gradient(to top,rgba(0,0,0,.62),rgba(0,0,0,0));
+  color:#fff
+}
+.overlay .cap{font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+.overlay .big{font-size:48px;line-height:.9;letter-spacing:-.06em;font-weight:800}
 
-/* Modal animation */
-@keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-.modal-animate { animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.poster{
+  padding:0;display:grid;grid-template-columns:40% 60%;min-height:570px;background:#fff
+}
+.poster .side{
+  background:var(--forest);color:#fff;padding:16px 12px;
+  display:flex;flex-direction:column;justify-content:space-between
+}
+.poster .side .vertical{
+  writing-mode:vertical-rl;transform:rotate(180deg);
+  font-size:58px;line-height:.8;font-weight:800;letter-spacing:-.07em
+}
+.poster .main{display:grid;grid-template-rows:54% 46%}
+.poster .main img{width:100%;height:100%;object-fit:cover;display:block}
+.poster-copy{padding:18px;position:relative;overflow:hidden}
+.poster-copy h3{
+  margin:0;font-size:58px;line-height:.84;letter-spacing:-.07em
+}
+.poster-copy .g{color:var(--green)}
+.poster-copy .circle{
+  position:absolute;width:126px;height:126px;border:2px solid var(--ink);border-radius:50%;
+  right:-22px;bottom:-30px
+}
+
+.moments{background:var(--paper)}
+.moments h2{
+  margin:0 0 12px;font-size:66px;line-height:.8;letter-spacing:-.08em
+}
+.moments .sub{font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:24px}
+.collage{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start
+}
+.collage img{width:100%;display:block;object-fit:cover;cursor:pointer}
+.wide{grid-column:1/-1;aspect-ratio:4/3}
+.tall{aspect-ratio:3/4}
+.sq{aspect-ratio:1/1}
+.offset{margin-top:46px}
+.pull{
+  grid-column:1/-1;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  padding:18px 0;margin:12px 0 6px;display:flex;justify-content:space-between;gap:18px;align-items:flex-end
+}
+.pull .txt{font-size:30px;line-height:1.05;letter-spacing:-.04em;font-weight:700;width:76%}
+.pull .mark{font-size:52px;color:var(--green);line-height:.8}
+
+/* beach editorial */
+.beach{padding:0;background:#fff}
+.beach-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:0
+}
+.beach-grid .panel{position:relative;min-height:430px;overflow:hidden}
+.beach-grid img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;cursor:pointer}
+.beach-grid .type{
+  background:#fff;padding:18px;display:flex;flex-direction:column;justify-content:space-between
+}
+.beach-grid .type .huge{
+  font-size:64px;line-height:.82;letter-spacing:-.08em;font-weight:800;margin:0
+}
+.beach-grid .type .line{
+  border-top:1px solid var(--ink);padding-top:8px;font-size:10px;letter-spacing:.14em;text-transform:uppercase
+}
+
+.wedding{background:#fff}
+.wedding-top{
+  display:grid;grid-template-columns:1fr .72fr;gap:14px;margin-bottom:34px
+}
+.wedding h2{
+  margin:0;font-size:72px;line-height:.82;letter-spacing:-.08em
+}
+.sideinfo{
+  border-left:1px solid var(--ink);padding-left:12px;
+  font-size:10px;line-height:1.7;letter-spacing:.11em;text-transform:uppercase
+}
+.row{
+  display:grid;grid-template-columns:74px 1fr;gap:16px;
+  border-top:1px solid var(--line);padding:16px 0;font-size:14px;line-height:1.6
+}
+.row:last-child{border-bottom:1px solid var(--line)}
+.row .k{font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+
+.account-section{background:#fff;border-top:1px solid var(--ink)}
+.account-box{border:1px solid var(--line);padding:16px;margin-bottom:14px;background:var(--paper)}
+.account-title{font-size:12px;font-weight:bold;margin-bottom:8px;letter-spacing:.08em;display:flex;justify-content:space-between;align-items:center}
+.account-detail{font-size:13px;line-height:1.6;color:#333}
+.copy-btn{background:var(--green);color:#fff;border:none;padding:4px 8px;font-size:10px;cursor:pointer;letter-spacing:.05em}
+
+.guestbook{background:#fff;border-top:1px solid var(--ink)}
+.guestbook h2{margin:0 0 20px;font-size:40px;letter-spacing:-.06em}
+.gb-form{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.gb-form input, .gb-form textarea{
+  width:100%;padding:10px;border:1px solid var(--line);background:var(--paper);font-family:inherit;font-size:14px;
+}
+.gb-form textarea{resize:vertical;min-height:80px}
+.gb-submit{background:var(--ink);color:#fff;border:none;padding:12px;font-size:12px;cursor:pointer;letter-spacing:.1em;text-transform:uppercase}
+.gb-list{display:flex;flex-direction:column;gap:10px}
+.gb-item{background:var(--paper);padding:12px;border-left:3px solid var(--green);font-size:13px;line-height:1.5}
+.gb-item .gb-info{display:flex;justify-content:space-between;font-size:10px;color:#666;margin-bottom:4px;letter-spacing:.05em}
+
+.location{background:var(--green);color:#fff}
+.location .section-head{border-color:#fff}
+.location h2{
+  margin:0 0 28px;font-size:52px;line-height:.88;letter-spacing:-.06em
+}
+.addr{font-size:16px;line-height:1.8;margin-bottom:24px}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{
+  border:1px solid #fff;color:#fff;background:transparent;padding:13px 10px;
+  font-size:12px;text-decoration:none;text-align:center;cursor:pointer
+}
+
+.closing{
+  min-height:82svh;position:relative;display:flex;flex-direction:column;justify-content:space-between;background:var(--paper);padding:62px 16px
+}
+.closing h2{margin:0;font-size:54px;line-height:.92;letter-spacing:-.06em;width:90%}
+.closing .date2{margin-top:42px;font-size:92px;line-height:.78;letter-spacing:-.09em;font-weight:800;color:var(--green)}
+.closing .names{margin-top:18px;font-size:14px;letter-spacing:.04em}
+.closing .hanja{
+  position:absolute;right:-8px;bottom:4px;writing-mode:vertical-rl;
+  font-family:Georgia,"Times New Roman",serif;font-size:64px;line-height:.8;color:rgba(13,91,57,.16)
+}
+.footer{padding:18px 16px;background:#fff;font-size:9px;letter-spacing:.12em;text-transform:uppercase}
+
+/* Modal for Image Preview */
+#imageModal{
+  position:fixed;inset:0;background:rgba(0,0,0,0.85);display:none;justify-content:center;align-items:center;z-index:999;padding:20px;
+}
+#imageModal img{
+  max-width:100%;max-height:100%;object-fit:contain;
+}
+
+@media(min-width:700px){.wrap{margin:36px auto}}
 </style>
 </head>
-<body class="bg-[#e4e3dc] text-[#141614]">
+<body>
+<main class="wrap">
 
-<main class="wrap relative">
-
-  <!-- HERO SECTION -->
-  <header class="hero min-h-[100svh] p-4 sm:p-6 pb-8 flex flex-col justify-between">
-    <div class="topline text-[10px] tracking-[0.18em] uppercase flex justify-between pb-3 border-b border-[#141614]/20 font-semibold">
-      <span>Wedding Invitation</span>
-      <span>Seoul / 2026</span>
-    </div>
-
-    <div class="hero-grid grid grid-cols-[0.88fr_1.12fr] gap-3 pt-4 my-auto">
-      <div class="hero-type flex flex-col justify-between">
-        <div>
-          <h1 class="hero-title m-0 text-[clamp(48px,15vw,80px)] font-extrabold leading-[0.78] tracking-[-0.08em] uppercase">
-            <span class="block">GAHWA</span>
-            <span class="block">MANSA</span>
-            <span class="block">SEONG</span>
-          </h1>
-          <div class="hero-side [writing-mode:vertical-rl] rotate-180 text-[11px] tracking-[0.14em] mt-6 text-[#141614]/70 font-medium">
-            家和萬事成 · WONHEE × EUNJEONG
-          </div>
-        </div>
-        <div class="text-[9px] tracking-[0.16em] uppercase text-[#141614]/60">A SMALL ARCHIVE OF US</div>
-      </div>
-
-      <div class="hero-photo relative overflow-hidden rounded-xl aspect-[3/4] bg-[#ddd]">
-        <img src="https://placehold.co/600x800/214234/ffffff?text=Wonhee+&+Eunjeong" 
-             onerror="this.src='https://placehold.co/600x800/183628/fff?text=Wedding+Photo'" 
-             alt="웨딩 대표 사진" 
-             class="w-full h-full object-cover object-[45%_50%] transition-transform duration-700 hover:scale-105 cursor-pointer"
-             onclick="openLightbox(this.src)">
-        <div class="stamp absolute right-2 top-2 bg-[var(--green)] text-white px-2.5 py-2 text-[10px] leading-[1.2] font-bold uppercase tracking-wider rotate-[2deg] rounded shadow-md">
-          10.18<br>SUN
-        </div>
-      </div>
-    </div>
-
-    <div class="hero-bottom mt-4 pt-4 border-t border-[#141614] grid grid-cols-[1fr_auto] items-end gap-3">
-      <div class="bigdate text-[72px] sm:text-[84px] leading-[0.78] tracking-[-0.08em] font-extrabold">10.18</div>
-      <div class="hero-meta text-[10px] leading-[1.65] tracking-[0.14em] uppercase text-right font-medium">
-        2026 Sunday<br>12:00 PM<br>Lotte Hotel Seoul
-      </div>
-    </div>
-  </header>
-
-  <!-- INVITATION MESSAGE -->
-  <section class="invite bg-white p-6 sm:p-10 relative overflow-hidden my-2">
-    <div class="section-head flex justify-between items-start border-t border-[#141614] pt-3 mb-8 text-[10px] tracking-[0.15em] uppercase font-bold">
-      <span>01</span><span>Invitation / 초대합니다</span>
-    </div>
-    <div class="vert absolute -left-1 top-40 [writing-mode:vertical-rl] rotate-180 text-[var(--green)] text-[40px] font-extrabold tracking-[-0.06em] leading-[0.8] opacity-10 pointer-events-none select-none">
-      TOGETHER
-    </div>
-    <h2 class="m-0 mb-8 text-[36px] sm:text-[44px] leading-[1.0] tracking-[-0.05em] font-extrabold text-[#141614]">
-      우리의 하루들이<br>하나의 이야기가<br>되었습니다.
-    </h2>
-    <div class="text-[15px] sm:text-[16px] leading-[2.0] tracking-[-0.02em] text-[#333] space-y-4 font-normal">
-      <p>
-        함께 웃고, 싸우고, 또 함께 웃었습니다.<br>
-        페스티벌도 가고, 영화를 보고, 자전거를 타고, 여행을 다니며 참 많은 순간을 함께했습니다.
-      </p>
-      <p>
-        좋은 날도, 별것 아닌 날도 함께라서 즐거웠고<br>
-        그렇게 쌓인 우리의 하루들이 어느새 하나의 이야기가 되었습니다.
-      </p>
-      <p class="font-medium text-[var(--green)] pt-2">
-        이제 그 이야기를 평생 함께 이어가려 합니다.<br>
-        저희의 새로운 시작에 소중한 분들을 초대합니다.
-      </p>
-    </div>
-
-    <!-- Bride & Groom Info -->
-    <div class="mt-10 pt-6 border-t border-dashed border-gray-300 flex justify-around items-center text-center">
-      <div>
-        <span class="text-[10px] tracking-widest uppercase text-gray-500 block mb-1">SHIN-RANG</span>
-        <strong class="text-lg font-bold">이원희</strong>
-        <span class="text-xs text-gray-600 block mt-0.5">의 차남</span>
-      </div>
-      <div class="text-gray-300 font-light text-2xl">×</div>
-      <div>
-        <span class="text-[10px] tracking-widest uppercase text-gray-500 block mb-1">SHIN-BU</span>
-        <strong class="text-lg font-bold">양은정</strong>
-        <span class="text-xs text-gray-600 block mt-0.5">의 장녀</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- EDITORIAL FULL SEQUENCE 1 -->
-  <section class="sequence p-0 bg-[var(--paper)]">
-    <div class="full relative min-h-[70svh] overflow-hidden">
-      <img src="https://placehold.co/800x1000/183628/ffffff?text=Forest+Story" 
-           onerror="this.src='https://placehold.co/800x1000/214234/fff?text=Forest+Moment'" 
-           alt="숲에서 함께 서 있는 두 사람" 
-           class="w-full h-full object-cover absolute inset-0 cursor-pointer"
-           onclick="openLightbox(this.src)">
-      <div class="overlay absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent text-white">
-        <div class="cap text-[10px] tracking-[0.16em] uppercase mb-1 text-emerald-300 font-semibold">Chapter 01 / Forest</div>
-        <div class="big text-[38px] sm:text-[46px] leading-[0.95] tracking-[-0.05em] font-extrabold">GOOD DAYS.<br>ORDINARY DAYS.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- POSTER GRID SECTION -->
-  <section class="poster p-0 grid grid-cols-1 sm:grid-cols-[40%_60%] min-h-[500px] bg-white">
-    <div class="side bg-[var(--forest)] text-white p-6 flex flex-col justify-between">
-      <div class="micro text-[10px] tracking-[0.16em] uppercase text-emerald-200">WONHEE LEE<br>×<br>EUNJEONG YANG</div>
-      <div class="vertical [writing-mode:vertical-rl] rotate-180 text-[48px] sm:text-[58px] leading-[0.8] font-extrabold tracking-[-0.07em] my-6">ANTHOLOGY</div>
-      <div class="micro text-[10px] tracking-[0.16em] uppercase text-white/60">VOL. 2026 / SEOUL</div>
-    </div>
-    <div class="main grid grid-rows-[55%_45%]">
-      <img src="https://placehold.co/600x700/e4e3dc/141614?text=Playful+Moment" 
-           onerror="this.src='https://placehold.co/600x700/ccc/333?text=Photo'" 
-           alt="숲속 장난스러운 웨딩 사진" 
-           class="w-full h-full object-cover cursor-pointer"
-           onclick="openLightbox(this.src)">
-      <div class="poster-copy p-6 relative overflow-hidden bg-white flex flex-col justify-center">
-        <h3 class="m-0 text-[44px] sm:text-[52px] leading-[0.88] tracking-[-0.07em] font-extrabold">
-          OUR<br><span class="g text-[var(--green)]">STORY</span><br>GOES ON.
-        </h3>
-        <div class="circle absolute -right-6 -bottom-8 w-28 h-28 border-2 border-[var(--ink)] rounded-full opacity-25 pointer-events-none"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MOMENTS GALLERY -->
-  <section class="moments p-6 sm:p-8 bg-[var(--paper)]">
-    <div class="section-head flex justify-between items-start border-t border-[#141614] pt-3 mb-6 text-[10px] tracking-[0.15em] uppercase font-bold">
-      <span>02</span><span>Our Moments / 우리의 순간들</span>
-    </div>
-    <h2 class="m-0 mb-1 text-[52px] sm:text-[62px] leading-[0.85] tracking-[-0.08em] font-extrabold">OUR<br>MOMENTS</h2>
-    <div class="sub text-[10px] tracking-[0.14em] uppercase text-gray-500 mb-6 font-semibold">good days / ordinary days / all ours</div>
-
-    <div class="collage grid grid-cols-2 gap-2.5 items-start">
-      <img class="wide col-span-2 aspect-[4/3] w-full object-cover rounded-lg cursor-pointer hover:opacity-95 transition" src="https://placehold.co/800x600/d0d0cc/333?text=Moment+1" onerror="this.src='https://placehold.co/800x600/ccc/333?text=Photo'" alt="서로 기대어 웃는 두 사람" onclick="openLightbox(this.src)">
-      <img class="tall aspect-[3/4] w-full object-cover rounded-lg cursor-pointer hover:opacity-95 transition" src="https://placehold.co/500x666/d5d4ce/333?text=Moment+2" onerror="this.src='https://placehold.co/500x666/ccc/333?text=Photo'" alt="신부 단독 사진" onclick="openLightbox(this.src)">
-      <img class="tall mt-6 aspect-[3/4] w-full object-cover rounded-lg cursor-pointer hover:opacity-95 transition" src="https://placehold.co/500x666/dfded6/333?text=Moment+3" onerror="this.src='https://placehold.co/500x666/ccc/333?text=Photo'" alt="신랑 단독 사진" onclick="openLightbox(this.src)">
-
-      <div class="pull col-span-2 border-t border-b border-[#141614] py-5 my-4 flex justify-between items-end">
-        <div class="txt text-[22px] sm:text-[28px] leading-[1.1] tracking-[-0.04em] font-bold w-[78%]">좋은 날도,<br>별것 아닌 날도,<br>함께라서 즐거웠습니다.</div>
-        <div class="mark text-[44px] text-[var(--green)] leading-[0.8] font-bold">＊</div>
-      </div>
-
-      <img class="wide col-span-2 aspect-[4/3] w-full object-cover rounded-lg cursor-pointer hover:opacity-95 transition" src="https://placehold.co/800x600/c7c6be/333?text=Moment+4" onerror="this.src='https://placehold.co/800x600/ccc/333?text=Photo'" alt="숲속에서 함께" onclick="openLightbox(this.src)">
-      <img class="sq aspect-square w-full object-cover rounded-lg cursor-pointer hover:opacity-95 transition" src="https://placehold.co/500x500/d8d7cf/333?text=Moment+5" onerror="this.src='https://placehold.co/500x500/ccc/333?text=Photo'" alt="함께 웃는 두 사람" onclick="openLightbox(this.src)">
-      <img class="sq mt-6 aspect-square w-full object-cover rounded-lg cursor-pointer hover:opacity-95 transition" src="https://placehold.co/500x500/cecdc5/333?text=Moment+6" onerror="this.src='https://placehold.co/500x500/ccc/333?text=Photo'" alt="서로 바라보는 두 사람" onclick="openLightbox(this.src)">
-    </div>
-  </section>
-
-  <!-- BEACH EDITORIAL -->
-  <section class="beach p-0 bg-white">
-    <div class="beach-grid grid grid-cols-1 sm:grid-cols-2">
-      <div class="panel relative min-h-[360px] overflow-hidden">
-        <img src="https://placehold.co/600x600/183628/fff?text=Beach+1" onerror="this.src='https://placehold.co/600x600/ccc/333?text=Photo'" alt="바닷가의 두 사람" class="w-full h-full object-cover absolute inset-0 cursor-pointer" onclick="openLightbox(this.src)">
-      </div>
-      <div class="panel type bg-white p-6 flex flex-col justify-between min-h-[300px]">
-        <div class="micro text-[10px] tracking-[0.16em] uppercase text-gray-500 font-semibold">Chapter 02 / Beach</div>
-        <p class="huge text-[52px] sm:text-[60px] leading-[0.85] tracking-[-0.08em] font-extrabold my-4">SEA.<br>WIND.<br>US.</p>
-        <div class="line border-t border-[#141614] pt-3 text-[10px] tracking-[0.14em] uppercase text-gray-600 font-semibold">2026 / 10 / 18 / Sunday</div>
-      </div>
-      <div class="panel type bg-white p-6 flex flex-col justify-between min-h-[300px]">
-        <div class="micro text-[10px] tracking-[0.16em] uppercase text-gray-500 font-semibold">No. 18</div>
-        <p class="huge text-[52px] sm:text-[60px] leading-[0.85] tracking-[-0.08em] font-extrabold my-4 text-[var(--green)]">JUST<br>LIKE<br>THIS.</p>
-        <div class="line border-t border-[#141614] pt-3 text-[10px] tracking-[0.14em] uppercase text-gray-600 font-semibold">our small archive</div>
-      </div>
-      <div class="panel relative min-h-[360px] overflow-hidden">
-        <img src="https://placehold.co/600x600/214234/fff?text=Beach+2" onerror="this.src='https://placehold.co/600x600/ccc/333?text=Photo'" alt="바닷가에서 웃는 두 사람" class="w-full h-full object-cover absolute inset-0 cursor-pointer" onclick="openLightbox(this.src)">
-      </div>
-    </div>
-  </section>
-
-  <!-- WEDDING INFO SECTION -->
-  <section class="wedding bg-white p-6 sm:p-10 border-t border-[#141614]/10">
-    <div class="section-head flex justify-between items-start border-t border-[#141614] pt-3 mb-6 text-[10px] tracking-[0.15em] uppercase font-bold">
-      <span>03</span><span>Wedding Day</span>
-    </div>
-    <div class="wedding-top grid grid-cols-[1fr_0.72fr] gap-4 mb-8">
-      <h2 class="m-0 text-[56px] sm:text-[68px] leading-[0.85] tracking-[-0.08em] font-extrabold">2026©<br>10.18</h2>
-      <div class="sideinfo border-l border-[#141614] pl-3 text-[10px] leading-[1.7] tracking-[0.12em] uppercase font-semibold text-gray-600">
-        Sunday<br>Noon<br>Seoul<br><br>
-        Family<br>Friends<br>Us
-      </div>
-    </div>
-
-    <div class="space-y-0">
-      <div class="row grid grid-cols-[74px_1fr] gap-4 border-t border-[#141614]/15 py-4 text-sm leading-relaxed">
-        <div class="k text-[10px] tracking-[0.14em] uppercase font-bold text-gray-500 pt-0.5">When</div>
-        <div>2026년 10월 18일 일요일<br><strong class="font-bold text-[var(--green)]">낮 12시</strong></div>
-      </div>
-      <div class="row grid grid-cols-[74px_1fr] gap-4 border-t border-[#141614]/15 py-4 text-sm leading-relaxed">
-        <div class="k text-[10px] tracking-[0.14em] uppercase font-bold text-gray-500 pt-0.5">Where</div>
-        <div><strong>롯데호텔 서울</strong><br>무궁화 · 가람홀 (2층)</div>
-      </div>
-      <div class="row grid grid-cols-[74px_1fr] gap-4 border-t border-b border-[#141614]/15 py-4 text-sm leading-relaxed">
-        <div class="k text-[10px] tracking-[0.14em] uppercase font-bold text-gray-500 pt-0.5">Address</div>
-        <div>서울특별시 중구 을지로 30</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LOCATION & MAP & ACTIONS -->
-  <section class="location bg-[var(--green)] text-white p-6 sm:p-10">
-    <div class="section-head flex justify-between items-start border-t border-white/60 pt-3 mb-6 text-[10px] tracking-[0.15em] uppercase font-bold text-white/90">
-      <span>04</span><span>Location / 오시는 길</span>
-    </div>
-    <h2 class="m-0 mb-4 text-[42px] sm:text-[50px] leading-[0.9] tracking-[-0.06em] font-extrabold">LOTTE<br>HOTEL<br>SEOUL</h2>
-    <div class="addr text-base leading-[1.8] mb-6 text-white/90">
-      롯데호텔 서울 무궁화 · 가람홀<br>
-      서울특별시 중구 을지로 30
-    </div>
-
-    <div class="actions grid grid-cols-2 gap-3 mb-8">
-      <a class="btn border border-white text-white bg-transparent py-3.5 px-3 text-xs tracking-wider uppercase text-center font-bold rounded hover:bg-white/15 transition block" href="https://map.naver.com/p/search/%EB%A1%AF%EB%8D%B0%ED%98%B8%ED%85%94%20%EC%84%9C%EC%9A%B8" target="_blank" rel="noopener">네이버 지도</a>
-      <a class="btn border border-white text-white bg-transparent py-3.5 px-3 text-xs tracking-wider uppercase text-center font-bold rounded hover:bg-white/15 transition block" href="https://kko.to/lottehotelseoul" target="_blank" rel="noopener">카카오맵 보기</a>
-    </div>
-
-    <!-- Transport Guide -->
-    <div class="bg-white/10 rounded-lg p-4 text-xs space-y-3 border border-white/20">
-      <div>
-        <strong class="text-emerald-200 block mb-1">🚇 지하철 이용 시</strong>
-        <p class="text-white/80 leading-relaxed m-0">2호선 을지로입구역 8번 출구 도보 2분<br>1, 2호선 시청역 5번 출구 도보 5분</p>
-      </div>
-      <div class="border-t border-white/15 pt-2">
-        <strong class="text-emerald-200 block mb-1">🚗 주차 안내</strong>
-        <p class="text-white/80 leading-relaxed m-0">호텔 내 지하 주차장 이용 가능 (하객 3시간 무료 주차권 제공)</p>
-      </div>
-    </div>
-
-    <div class="mt-4">
-      <button onclick="copyAddress()" class="w-full bg-white text-[var(--green)] font-bold py-3.5 px-4 rounded text-xs tracking-wider uppercase shadow hover:bg-emerald-50 transition">
-        주소 복사하기
-      </button>
-    </div>
-  </section>
-
-  <!-- ACCOUNT REMITTANCE SECTION -->
-  <section class="accounts bg-white p-6 sm:p-10 border-t border-[#141614]/10">
-    <div class="section-head flex justify-between items-start border-t border-[#141614] pt-3 mb-6 text-[10px] tracking-[0.15em] uppercase font-bold">
-      <span>05</span><span>Heart / 마음 전하실 곳</span>
-    </div>
-    <h2 class="m-0 mb-2 text-[32px] sm:text-[38px] leading-[0.95] tracking-[-0.05em] font-extrabold">축하의 마음을<br>전해주세요</h2>
-    <p class="text-xs text-gray-500 mb-6">참석하지 못하시는 분들을 위해 계좌번호를 안내해 드립니다.</p>
-
-    <!-- Groom Accounts Accordion -->
-    <div class="space-y-3">
-      <div class="border border-gray-200 rounded-lg overflow-hidden">
-        <button onclick="toggleAccordion('groom-acc')" class="w-full p-4 bg-gray-50 flex justify-between items-center text-left font-bold text-sm">
-          <span>신랑 측 계좌번호</span>
-          <span id="groom-acc-icon" class="text-gray-400 text-lg transition-transform">▼</span>
-        </button>
-        <div id="groom-acc" class="hidden p-4 space-y-3 border-t border-gray-100 text-sm bg-white">
-          <div class="flex justify-between items-center pb-2 border-b border-gray-100">
-            <div>
-              <span class="text-xs text-gray-500 block">신랑 이원희</span>
-              <strong class="font-medium">우리은행 1002-123-456789</strong>
-            </div>
-            <button onclick="copyText('1002123456789')" class="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-xs rounded font-medium transition">복사</button>
-          </div>
-          <div class="flex justify-between items-center">
-            <div>
-              <span class="text-xs text-gray-500 block">혼주 (부) 이OO</span>
-              <strong class="font-medium">국민은행 123456-04-123456</strong>
-            </div>
-            <button onclick="copyText('12345604123456')" class="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-xs rounded font-medium transition">복사</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Bride Accounts Accordion -->
-      <div class="border border-gray-200 rounded-lg overflow-hidden">
-        <button onclick="toggleAccordion('bride-acc')" class="w-full p-4 bg-gray-50 flex justify-between items-center text-left font-bold text-sm">
-          <span>신부 측 계좌번호</span>
-          <span id="bride-acc-icon" class="text-gray-400 text-lg transition-transform">▼</span>
-        </button>
-        <div id="bride-acc" class="hidden p-4 space-y-3 border-t border-gray-100 text-sm bg-white">
-          <div class="flex justify-between items-center pb-2 border-b border-gray-100">
-            <div>
-              <span class="text-xs text-gray-500 block">신부 양은정</span>
-              <strong class="font-medium">신한은행 110-345-678901</strong>
-            </div>
-            <button onclick="copyText('110345678901')" class="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-xs rounded font-medium transition">복사</button>
-          </div>
-          <div class="flex justify-between items-center">
-            <div>
-              <span class="text-xs text-gray-500 block">혼주 (모) 김OO</span>
-              <strong class="font-medium">하나은행 123-18-123456</strong>
-            </div>
-            <button onclick="copyText('12318123456')" class="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-xs rounded font-medium transition">복사</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CLOSING SECTION -->
-  <section class="closing min-h-[75svh] p-6 sm:p-10 relative flex flex-col justify-between bg-white overflow-hidden border-t border-[#141614]/10">
-    <div>
-      <div class="section-head flex justify-between items-start border-t border-[#141614] pt-3 mb-6 text-[10px] tracking-[0.15em] uppercase font-bold">
-        <span>06</span><span>See You There</span>
-      </div>
-      <h2 class="m-0 text-[44px] sm:text-[52px] leading-[0.95] tracking-[-0.06em] font-extrabold w-[90%]">우리의 시작에<br>함께해 주세요.</h2>
-      <div class="date2 mt-8 text-[76px] sm:text-[90px] leading-[0.78] tracking-[-0.09em] font-extrabold text-[var(--green)]">10.18</div>
-      <div class="names mt-6 text-sm tracking-widest uppercase font-semibold text-gray-700">2026 · SUNDAY · 12:00 PM<br><strong class="text-black font-extrabold">이원희 &amp; 양은정</strong></div>
-    </div>
-    <div class="hanja absolute -right-2 bottom-2 [writing-mode:vertical-rl] font-serif text-[64px] sm:text-[80px] leading-[0.8] text-[var(--green)] opacity-15 pointer-events-none select-none">
-      家和萬事成
-    </div>
-  </section>
-
-  <!-- SHARE & FOOTER -->
-  <div class="p-6 bg-white border-t border-gray-200 text-center space-y-4">
-    <button onclick="shareKakao()" class="w-full py-3.5 px-4 bg-[#FEE500] text-[#191919] font-bold text-xs uppercase tracking-wider rounded-lg shadow-sm hover:bg-[#fdd800] transition flex items-center justify-center gap-2">
-      <span>💬 카카오톡 청첩장 공유하기</span>
-    </button>
-    <div class="footer text-[9px] tracking-[0.14em] uppercase text-gray-400">© 2026 WONHEE LEE × EUNJEONG YANG · WEDDING INVITATION</div>
+<header class="hero">
+  <div class="topline micro">
+    <span>Wedding Invitation</span>
+    <span>Seoul / 2026</span>
   </div>
 
+  <div class="hero-grid">
+    <div class="hero-type">
+      <div>
+        <h1 class="hero-title">
+          <span>GAHWA</span>
+          <span>MANSA</span>
+          <span>SEONG</span>
+        </h1>
+        <div class="hero-side">家和萬事成 · WONHEE × EUNJEONG</div>
+      </div>
+      <div class="micro">A SMALL ARCHIVE OF US</div>
+    </div>
+
+    <div class="hero-photo">
+      <img src="images/photo1.jpg" alt="숲속 웨딩 사진">
+      <div class="stamp">10.18<br>SUN</div>
+    </div>
+  </div>
+
+  <div class="hero-bottom">
+    <div class="bigdate">10.18</div>
+    <div class="hero-meta">2026 Sunday<br>12:00 PM<br>Lotte Hotel Seoul</div>
+  </div>
+</header>
+
+<section class="invite">
+  <div class="section-head"><span>01</span><span>Invitation / 초대합니다</span></div>
+  <div class="vert">TOGETHER</div>
+  <h2>우리의 하루들이<br>하나의 이야기가<br>되었습니다.</h2>
+  <p>
+    함께 웃고, 싸우고,<br>
+    또 함께 웃었습니다.<br><br>
+    페스티벌도 가고, 영화를 보고,<br>
+    자전거를 타고, 여행을 다니며<br>
+    참 많은 순간을 함께했습니다.<br><br>
+    좋은 날도, 별것 아닌 날도<br>
+    함께라서 즐거웠고<br><br>
+    그렇게 쌓인 우리의 하루들이<br>
+    어느새 하나의 이야기가 되었습니다.<br><br>
+    이제 그 이야기를<br>
+    평생 함께 이어가려 합니다.<br><br>
+    저희의 새로운 시작에<br>
+    소중한 분들을 초대합니다.
+  </p>
+</section>
+
+<section class="sequence">
+  <div class="full">
+    <img src="images/photo2.jpg" alt="숲에서 함께 서 있는 두 사람">
+    <div class="overlay">
+      <div class="cap">Chapter 01 / Forest</div>
+      <div class="big">GOOD DAYS.<br>ORDINARY DAYS.</div>
+    </div>
+  </div>
+</section>
+
+<section class="poster">
+  <div class="side">
+    <div class="micro">WONHEE LEE<br>×<br>EUNJEONG YANG</div>
+    <div class="vertical">ANTHOLOGY</div>
+    <div class="micro">VOL. 2026 / SEOUL</div>
+  </div>
+  <div class="main">
+    <img src="images/photo3.jpg" alt="숲속 장난스러운 웨딩 사진">
+    <div class="poster-copy">
+      <h3>OUR<br><span class="g">STORY</span><br>GOES ON.</h3>
+      <div class="circle"></div>
+    </div>
+  </div>
+</section>
+
+<section class="moments">
+  <div class="section-head"><span>02</span><span>Our Moments / 우리의 순간들</span></div>
+  <h2>OUR<br>MOMENTS</h2>
+  <div class="sub">good days / ordinary days / all ours</div>
+
+  <div class="collage">
+    <img class="wide" src="images/photo4.jpg" alt="서로 기대어 웃는 두 사람">
+    <img class="tall" src="images/photo1.jpg" alt="신부 단독 사진">
+    <img class="tall offset" src="images/photo2.jpg" alt="숲속 신랑 단독 사진">
+
+    <div class="pull">
+      <div class="txt">좋은 날도,<br>별것 아닌 날도,<br>함께라서 즐거웠습니다.</div>
+      <div class="mark">＊</div>
+    </div>
+
+    <img class="wide" src="images/photo3.jpg" alt="숲속에서 함께 서 있는 두 사람">
+    <img class="sq" src="images/photo4.jpg" alt="함께 웃는 두 사람">
+    <img class="sq offset" src="images/photo1.jpg" alt="서로 바라보는 두 사람">
+    <img class="wide" src="images/photo2.jpg" alt="햇살 아래 함께 있는 두 사람">
+    <img class="wide" src="images/photo3.jpg" alt="햇살 속 신부">
+  </div>
+</section>
+
+<section class="beach">
+  <div class="beach-grid">
+    <div class="panel"><img src="images/photo4.jpg" alt="바닷가의 두 사람"></div>
+    <div class="panel type">
+      <div class="micro">Chapter 02 / Beach</div>
+      <p class="huge">SEA.<br>WIND.<br>US.</p>
+      <div class="line">2026 / 10 / 18 / Sunday</div>
+    </div>
+    <div class="panel type">
+      <div class="micro">No. 18</div>
+      <p class="huge" style="color:var(--green)">JUST<br>LIKE<br>THIS.</p>
+      <div class="line">our small archive</div>
+    </div>
+    <div class="panel"><img src="images/photo1.jpg" alt="바닷가에서 웃는 두 사람"></div>
+  </div>
+</section>
+
+<section class="sequence">
+  <div class="full">
+    <img src="images/photo2.jpg" alt="바닷가 장난스러운 사진">
+    <div class="overlay">
+      <div class="cap">Chapter 03 / Play</div>
+      <div class="big">LAUGH,<br>AND KEEP GOING.</div>
+    </div>
+  </div>
+</section>
+
+<section class="moments" style="padding-top:54px">
+  <div class="collage">
+    <img class="tall" src="images/photo3.jpg" alt="바닷가 신랑 단독 사진">
+    <img class="tall offset" src="images/photo4.jpg" alt="바닷가 신부 옆모습">
+    <img class="wide" src="images/photo1.jpg" alt="바닷가 신부와 부케">
+    <img class="sq" src="images/photo2.jpg" alt="바닷가에서 가까이 선 두 사람">
+    <img class="sq offset" src="images/photo3.jpg" alt="바닷가 장난스러운 두 사람">
+  </div>
+</section>
+
+<section class="wedding">
+  <div class="section-head"><span>03</span><span>Wedding Day</span></div>
+  <div class="wedding-top">
+    <h2>2026©<br>10.18</h2>
+    <div class="sideinfo">
+      Sunday<br>Noon<br>Seoul<br><br>
+      Family<br>Friends<br>Us
+    </div>
+  </div>
+
+  <div class="row"><div class="k">When</div><div>2026년 10월 18일 일요일<br>낮 12시</div></div>
+  <div class="row"><div class="k">Where</div><div>롯데호텔 서울<br>무궁화 · 가람홀</div></div>
+  <div class="row"><div class="k">Address</div><div>서울특별시 중구 을지로 30</div></div>
+</section>
+
+<section class="account-section">
+  <div class="section-head"><span>04</span><span>Account / 마음 전하실 곳</span></div>
+  <div style="padding: 24px 16px;">
+    <div class="account-box">
+      <div class="account-title"><span>신랑 이원희</span> <button class="copy-btn" onclick="copyAccount('국민 123456-04-123456', this)">계좌 복사</button></div>
+      <div class="account-detail">국민은행 123456-04-123456<br>예금주: 이원희</div>
+    </div>
+    <div class="account-box" style="margin-bottom:0;">
+      <div class="account-title"><span>신부 양은정</span> <button class="copy-btn" onclick="copyAccount('신한 110-123-456789', this)">계좌 복사</button></div>
+      <div class="account-detail">신한은행 110-123-456789<br>예금주: 양은정</div>
+    </div>
+  </div>
+</section>
+
+<section class="guestbook">
+  <div class="section-head"><span>05</span><span>Guestbook / 축하 메시지</span></div>
+  <div style="padding: 0 16px;">
+    <h2>축하의 말을<br>남겨주세요</h2>
+    <div class="gb-form">
+      <input type="text" id="writerName" placeholder="성함">
+      <textarea id="writerMsg" placeholder="따뜻한 축하의 말씀을 남겨주세요."></textarea>
+      <button class="gb-submit" onclick="addMessage()">메시지 남기기</button>
+    </div>
+    <div class="gb-list" id="gbList"></div>
+  </div>
+</section>
+
+<section class="location">
+  <div class="section-head"><span>06</span><span>Location</span></div>
+  <h2>LOTTE<br>HOTEL<br>SEOUL</h2>
+  <div class="addr">롯데호텔 서울<br>무궁화 · 가람홀<br><br>서울특별시 중구 을지로 30</div>
+  <div class="actions">
+    <a class="btn" href="https://map.naver.com/p/search/%EB%A1%AF%EB%8D%B0%ED%98%B8%ED%85%94%20%EC%84%9C%EC%9A%B8" target="_blank" rel="noopener">지도 보기</a>
+    <button class="btn" onclick="copyAddress()">주소 복사</button>
+  </div>
+</section>
+
+<section class="closing">
+  <div>
+    <div class="section-head"><span>07</span><span>See You There</span></div>
+    <h2>우리의 시작에<br>함께해 주세요.</h2>
+    <div class="date2">10.18</div>
+    <div class="names">2026 · SUNDAY · 12:00 PM<br>이원희 &amp; 양은정</div>
+  </div>
+  <div class="hanja">家和萬事成</div>
+</section>
+
+<div class="footer">© 2026 WONHEE LEE × EUNJEONG YANG · WEDDING INVITATION</div>
 </main>
 
-<!-- LIGHTBOX MODAL -->
-<div id="lightbox" class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-4" onclick="closeLightbox()">
-  <div class="relative max-w-full max-h-full flex items-center justify-center" onclick="event.stopPropagation()">
-    <img id="lightbox-img" src="" alt="확대 이미지" class="max-w-[95vw] max-h-[90vh] object-contain rounded-lg shadow-2xl">
-    <button onclick="closeLightbox()" class="absolute -top-12 right-0 text-white text-3xl px-3 py-1 font-bold hover:text-gray-300">&times;</button>
-  </div>
-</div>
-
-<!-- TOAST MESSAGE BOX -->
-<div id="toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-black/85 text-white px-5 py-3 rounded-full text-xs font-medium tracking-wide shadow-xl opacity-0 pointer-events-none transition-opacity duration-300 z-50">
-  주소가 복사되었습니다.
+<!-- Modal -->
+<div id="imageModal" onclick="closeModal()">
+  <img id="modalImg" src="" alt="확대 이미지">
 </div>
 
 <script>
-function showToast(msg) {
-  const toast = document.getElementById('toast');
-  toast.innerText = msg;
-  toast.classList.remove('opacity-0');
-  setTimeout(() => {
-    toast.classList.add('opacity-0');
-  }, 2200);
-}
-
 function copyAddress(){
   const text="서울특별시 중구 을지로 30";
-  if(navigator.clipboard && navigator.clipboard.writeText){
-    navigator.clipboard.writeText(text).then(()=> {
-      showToast("예식장 주소가 복사되었습니다.");
-    }).catch(()=> {
-      fallbackCopy(text);
-    });
-  } else {
-    fallbackCopy(text);
+  navigator.clipboard.writeText(text).then(()=>alert("주소를 복사했습니다."))
+  .catch(()=>window.prompt("주소를 복사해 주세요.",text));
+}
+
+function copyAccount(acc, btn){
+  navigator.clipboard.writeText(acc).then(()=>{
+    const orig = btn.innerText;
+    btn.innerText = "복사완료!";
+    setTimeout(()=> btn.innerText = orig, 1500);
+  }).catch(()=>window.prompt("계좌번호를 복사해 주세요.", acc));
+}
+
+// Image Modal Preview
+document.querySelectorAll('.wrap img').forEach(img => {
+  img.addEventListener('click', () => {
+    document.getElementById('modalImg').src = img.src;
+    document.getElementById('imageModal').style.display = 'flex';
+  });
+});
+function closeModal(){
+  document.getElementById('imageModal').style.display = 'none';
+}
+
+// Guestbook (LocalStorage)
+function loadMessages(){
+  const list = document.getElementById('gbList');
+  const msgs = JSON.parse(localStorage.getItem('wedding_gb') || '[]');
+  list.innerHTML = '';
+  if(msgs.length === 0){
+    list.innerHTML = '<div style="font-size:12px;color:#666;text-align:center;padding:20px;">첫 번째 축하 메시지를 남겨주세요!</div>';
+    return;
   }
+  msgs.forEach(m => {
+    const div = document.createElement('div');
+    div.className = 'gb-item';
+    div.innerHTML = `<div class="gb-info"><span><b>${escapeHtml(m.name)}</b></span><span>${m.date}</span></div><div>${escapeHtml(m.msg)}</div>`;
+    list.appendChild(div);
+  });
 }
 
-function copyText(text){
-  if(navigator.clipboard && navigator.clipboard.writeText){
-    navigator.clipboard.writeText(text).then(()=> {
-      showToast("계좌번호가 복사되었습니다.");
-    }).catch(()=> {
-      fallbackCopy(text);
-    });
-  } else {
-    fallbackCopy(text);
+function addMessage(){
+  const nameInput = document.getElementById('writerName');
+  const msgInput = document.getElementById('writerMsg');
+  const name = nameInput.value.trim();
+  const msg = msgInput.value.trim();
+
+  if(!name || !msg){
+    alert('성함과 메시지를 모두 입력해주세요.');
+    return;
   }
+
+  const msgs = JSON.parse(localStorage.getItem('wedding_gb') || '[]');
+  const now = new Date();
+  const dateStr = `${now.getFullYear()}.${String(now.getMonth()+1).padStart(2,'0')}.${String(now.getDate()).padStart(2,'0')}`;
+  
+  msgs.unshift({name, msg, date: dateStr});
+  localStorage.setItem('wedding_gb', JSON.stringify(msgs));
+
+  nameInput.value = '';
+  msgInput.value = '';
+  loadMessages();
 }
 
-function fallbackCopy(text){
-  const textarea = document.createElement("textarea");
-  textarea.value = text;
-  textarea.style.position = "fixed";
-  document.body.appendChild(textarea);
-  textarea.focus();
-  textarea.select();
-  try {
-    document.execCommand('copy');
-    showToast("클립보드에 복사되었습니다.");
-  } catch (err) {
-    alert("복사 기능을 지원하지 않는 브라우저입니다.");
-  }
-  document.body.removeChild(textarea);
+function escapeHtml(str){
+  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
 }
 
-function openLightbox(src) {
-  const lb = document.getElementById('lightbox');
-  const img = document.getElementById('lightbox-img');
-  img.src = src;
-  lb.classList.remove('hidden');
-  lb.classList.add('flex');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeLightbox() {
-  const lb = document.getElementById('lightbox');
-  lb.classList.add('hidden');
-  lb.classList.remove('flex');
-  document.body.style.overflow = 'auto';
-}
-
-function toggleAccordion(id) {
-  const el = document.getElementById(id);
-  const icon = document.getElementById(id + '-icon');
-  if (el.classList.contains('hidden')) {
-    el.classList.remove('hidden');
-    icon.style.transform = 'rotate(180deg)';
-  } else {
-    el.classList.add('hidden');
-    icon.style.transform = 'rotate(0deg)';
-  }
-}
-
-function shareKakao() {
-  if (navigator.share) {
-    navigator.share({
-      title: '이원희 ♥ 양은정 결혼식에 초대합니다',
-      text: '2026년 10월 18일 낮 12시 롯데호텔 서울',
-      url: window.location.href,
-    }).catch(() => {});
-  } else {
-    copyText(window.location.href);
-    showToast("청첩장 링크가 복사되었습니다. 카카오톡에 붙여넣어 공유하세요.");
-  }
-}
+document.addEventListener('DOMContentLoaded', loadMessages);
 </script>
 </body>
-</html>
+</html>4
