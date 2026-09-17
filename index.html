@@ -157,14 +157,10 @@ section{padding:62px 16px}
 
 .wedding{background:#fff}
 .wedding-top{
-  display:grid;grid-template-columns:1fr .72fr;gap:14px;margin-bottom:34px
+  display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:34px
 }
 .wedding h2{
   margin:0;font-size:72px;line-height:.82;letter-spacing:-.08em
-}
-.sideinfo{
-  border-left:1px solid var(--ink);padding-left:12px;
-  font-size:10px;line-height:1.7;letter-spacing:.11em;text-transform:uppercase
 }
 .row{
   display:grid;grid-template-columns:74px 1fr;gap:16px;
@@ -241,9 +237,7 @@ section{padding:62px 16px}
     그렇게 쌓인 우리의 하루들이<br>
     어느새 하나의 이야기가 되었습니다.<br><br>
     이제 그 이야기를<br>
-    평생 함께 이어가려 합니다.<br><br>
-    저희의 새로운 시작에<br>
-    소중한 분들을 초대합니다.
+    평생 함께 이어가려 합니다.
   </p>
 </section>
 
@@ -336,10 +330,6 @@ section{padding:62px 16px}
   <div class="section-head"><span>03</span><span>Wedding Day</span></div>
   <div class="wedding-top">
     <h2>2026©<br>10.18</h2>
-    <div class="sideinfo">
-      Sunday<br>Noon<br>Seoul<br><br>
-      Family<br>Friends<br>Us
-    </div>
   </div>
 
   <div class="row"><div class="k">When</div><div>2026년 10월 18일 일요일<br>낮 12시</div></div>
@@ -352,7 +342,7 @@ section{padding:62px 16px}
   <div style="padding: 24px 16px;">
     <div class="account-box">
       <div class="account-title"><span>신랑 이원희</span> <button class="copy-btn" onclick="copyAccount('신한 110-229-952230', this)">계좌 복사</button></div>
-      <div class="account-detail">신한은행 110-229-952230<br>예금주: 이원희</div>
+      <div class="account-detail">신한 110-229-952230<br>예금주: 이원희</div>
     </div>
     <div class="account-box" style="margin-bottom:0;">
       <div class="account-title"><span>신부 양은정</span> <button class="copy-btn" onclick="copyAccount('국민 1002-945-058152', this)">계좌 복사</button></div>
@@ -361,7 +351,7 @@ section{padding:62px 16px}
   </div>
 </section>
 
-<div class="footer">© 2026 WONHEE LEE × EUNJEONG YANG · WEDDING INVITATION</div>
+<div class="footer">© 2026 WONHEE LEE × EUNJEONG YANG</div>
 </main>
 
 <!-- Modal -->
@@ -382,7 +372,7 @@ function copyAccount(acc, btn){
 document.querySelectorAll('.wrap img').forEach(img => {
   img.addEventListener('click', () => {
     document.getElementById('modalImg').src = img.src;
-    document.getElementById('imageModal').style.display = 'flex';
+    document.getElementById('imageModalstyle.display = 'flex';
   });
 });
 function closeModal(){
