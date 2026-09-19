@@ -22,34 +22,30 @@ body{
   width:min(100%,540px);margin:0 auto;background:var(--paper);overflow:hidden;
 }
 header.hero{
-  min-height:100svh;padding:16px 16px 24px;
-  display:grid;grid-template-rows:auto 1fr auto;
+  padding:24px 16px;
 }
 .micro{
   font-size:10px;letter-spacing:.16em;text-transform:uppercase;
 }
 .topline{
   display:flex;justify-content:space-between;gap:14px;
-  padding-bottom:8px;border-bottom:1px solid var(--line);
+  padding-bottom:8px;border-bottom:1px solid var(--line);margin-bottom:20px;
 }
-.hero-grid{
-  display:grid;grid-template-columns:.88fr 1.12fr;gap:12px;padding-top:14px;min-height:0;
-}
-.hero-type{display:flex;flex-direction:column;justify-content:space-between;min-width:0}
+/* 타이틀이 사진 위로 오도록 상하 배치 및 크기 최적화 */
 .hero-title{
-  margin:0;font-size:clamp(54px,16vw,88px);font-weight:800;
-  line-height:.78;letter-spacing:-.08em;text-transform:uppercase;
+  margin:0 0 12px 0;font-size:clamp(44px, 13vw, 76px);font-weight:800;
+  line-height:.85;letter-spacing:-.06em;text-transform:uppercase;
+  word-break:keep-all;
 }
-.hero-title span{display:block}
+.hero-title span{display:inline-block; margin-right: 8px;}
 .hero-side{
-  writing-mode:vertical-rl;transform:rotate(180deg);
-  font-size:12px;letter-spacing:.12em;margin-top:10px;
+  font-size:11px;letter-spacing:.12em;margin-bottom:16px;color:var(--forest);font-weight:600;
 }
 .hero-photo{
-  position:relative;overflow:hidden;min-height:0;
+  position:relative;overflow:hidden;width:100%;aspect-ratio:3/4;margin-top:10px;
 }
 .hero-photo img{
-  width:100%;height:100%;object-fit:cover;object-position:45% 50%;display:block;
+  width:100%;height:100%;object-fit:cover;object-position:center;display:block;
 }
 .stamp{
   position:absolute;right:8px;top:8px;background:var(--green);color:#fff;
@@ -57,31 +53,24 @@ header.hero{
   transform:rotate(2deg)
 }
 .hero-bottom{
-  margin-top:18px;border-top:1px solid var(--ink);padding-top:12px;
-  display:grid;grid-template-columns:1fr auto;align-items:end;gap:14px
+  margin-top:24px;border-top:1px solid var(--ink);padding-top:12px;
+  display:flex;justify-content:space-between;align-items:end;gap:14px
 }
-.bigdate{font-size:84px;line-height:.78;letter-spacing:-.08em;font-weight:800}
+.bigdate{font-size:64px;line-height:.78;letter-spacing:-.08em;font-weight:800}
 .hero-meta{font-size:10px;line-height:1.65;letter-spacing:.12em;text-transform:uppercase;text-align:right}
 
-section{padding:62px 16px}
-.section-head{
-  display:flex;justify-content:space-between;align-items:flex-start;gap:12px;
-  border-top:1px solid var(--ink);padding-top:8px;margin-bottom:26px;
-  font-size:10px;letter-spacing:.15em;text-transform:uppercase
-}
-.invite{background:#fff;position:relative}
+section{padding:50px 16px}
+
+/* 초대장 섹션: INVITATION 삭제 및 본문 위로 배치 */
+.invite{background:#fff;position:relative;padding-top:30px;}
 .invite h2{
-  margin:0 0 34px;font-size:44px;line-height:.92;letter-spacing:-.06em
+  margin:0 0 24px;font-size:38px;line-height:1.1;letter-spacing:-.04em
 }
 .invite p{
-  margin:0 0 0 auto;width:84%;font-size:16px;line-height:1.95;letter-spacing:-.02em
-}
-.invite .vert{
-  position:absolute;left:-2px;top:166px;writing-mode:vertical-rl;transform:rotate(180deg);
-  color:var(--green);font-size:46px;font-weight:800;letter-spacing:-.06em;line-height:.8
+  margin:0;width:100%;font-size:15px;line-height:1.9;letter-spacing:-.01em
 }
 
-/* editorial full-bleed sequence */
+/* 챕터 삭제 및 이미지 꽉 차게 설정 */
 .sequence{padding:0;background:var(--paper)}
 .full{
   position:relative;min-height:74svh;overflow:hidden;
@@ -120,36 +109,36 @@ section{padding:62px 16px}
 
 .moments{background:var(--paper)}
 .moments h2{
-  margin:0 0 12px;font-size:66px;line-height:.8;letter-spacing:-.08em
+  margin:0 0 12px;font-size:56px;line-height:.9;letter-spacing:-.06em
 }
 .moments .sub{font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:24px}
 .collage{
   display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start
 }
-.collage img{width:100%;display:block;object-fit:cover;cursor:pointer}
+.collage img{width:100%;height:100%;display:block;object-fit:cover;cursor:pointer}
 .wide{grid-column:1/-1;aspect-ratio:4/3}
 .tall{aspect-ratio:3/4}
 .sq{aspect-ratio:1/1}
-.offset{margin-top:46px}
+.offset{margin-top:0}
 .pull{
   grid-column:1/-1;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
   padding:18px 0;margin:12px 0 6px;display:flex;justify-content:space-between;gap:18px;align-items:flex-end
 }
-.pull .txt{font-size:30px;line-height:1.05;letter-spacing:-.04em;font-weight:700;width:76%}
-.pull .mark{font-size:52px;color:var(--green);line-height:.8}
+.pull .txt{font-size:24px;line-height:1.2;letter-spacing:-.03em;font-weight:700;width:76%}
+.pull .mark{font-size:42px;color:var(--green);line-height:.8}
 
-/* beach editorial */
+/* 비치 에디토리얼: 챕터 삭제 및 이미지 꽉 차게 수정 */
 .beach{padding:0;background:#fff}
 .beach-grid{
   display:grid;grid-template-columns:1fr 1fr;gap:0
 }
-.beach-grid .panel{position:relative;min-height:430px;overflow:hidden}
+.beach-grid .panel{position:relative;min-height:350px;overflow:hidden}
 .beach-grid img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;cursor:pointer}
 .beach-grid .type{
-  background:#fff;padding:18px;display:flex;flex-direction:column;justify-content:space-between
+  background:#fff;padding:24px;display:flex;flex-direction:column;justify-content:center;
 }
 .beach-grid .type .huge{
-  font-size:64px;line-height:.82;letter-spacing:-.08em;font-weight:800;margin:0
+  font-size:48px;line-height:.9;letter-spacing:-.06em;font-weight:800;margin:0 0 12px 0;
 }
 .beach-grid .type .line{
   border-top:1px solid var(--ink);padding-top:8px;font-size:10px;letter-spacing:.14em;text-transform:uppercase
@@ -157,10 +146,10 @@ section{padding:62px 16px}
 
 .wedding{background:#fff}
 .wedding-top{
-  display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:34px
+  display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:24px
 }
 .wedding h2{
-  margin:0;font-size:72px;line-height:.82;letter-spacing:-.08em
+  margin:0;font-size:56px;line-height:.9;letter-spacing:-.06em
 }
 .row{
   display:grid;grid-template-columns:74px 1fr;gap:16px;
@@ -197,23 +186,19 @@ section{padding:62px 16px}
     <span>Seoul / 2026</span>
   </div>
 
-  <div class="hero-grid">
-    <div class="hero-type">
-      <div>
-        <h1 class="hero-title">
-          <span>GAHWA</span>
-          <span>MANSA</span>
-          <span>SEONG</span>
-        </h1>
-        <div class="hero-side">家和萬事成 · WONHEE × EUNJEONG</div>
-      </div>
-      <div class="micro">A SMALL ARCHIVE OF US</div>
-    </div>
+  <!-- 가화만사성 영어가 사진보다 위로 오도록 배치 -->
+  <div>
+    <h1 class="hero-title">
+      <span>GAHWA</span>
+      <span>MANSA</span>
+      <span>SEONG</span>
+    </h1>
+    <div class="hero-side">家和萬事成 · WONHEE × EUNJEONG</div>
+  </div>
 
-    <div class="hero-photo">
-      <img src="photo1.jpg" alt="숲속 웨딩 사진">
-      <div class="stamp">10.18<br>SUN</div>
-    </div>
+  <div class="hero-photo">
+    <img src="photo1.jpg" alt="웨딩 메인 사진">
+    <div class="stamp">10.18<br>SUN</div>
   </div>
 
   <div class="hero-bottom">
@@ -223,8 +208,7 @@ section{padding:62px 16px}
 </header>
 
 <section class="invite">
-  <div class="section-head"><span>01</span><span>Invitation / 초대합니다</span></div>
-  <div class="vert">TOGETHER</div>
+  <div class="section-head"><span>01</span><span>Invitation</span></div>
   <h2>우리의 하루들이<br>하나의 이야기가<br>되었습니다.</h2>
   <p>
     함께 웃고, 싸우고,<br>
@@ -243,9 +227,9 @@ section{padding:62px 16px}
 
 <section class="sequence">
   <div class="full">
-    <img src="photo2.jpg" alt="숲에서 함께 서 있는 두 사람">
+    <img src="photo2.jpg" alt="웨딩 사진 2">
     <div class="overlay">
-      <div class="cap">Chapter 01 / Forest</div>
+      <div class="cap">Story 01</div>
       <div class="big">GOOD DAYS.<br>ORDINARY DAYS.</div>
     </div>
   </div>
@@ -258,7 +242,7 @@ section{padding:62px 16px}
     <div class="micro">VOL. 2026 / SEOUL</div>
   </div>
   <div class="main">
-    <img src="photo3.jpg" alt="숲속 장난스러운 웨딩 사진">
+    <img src="photo3.jpg" alt="웨딩 사진 3">
     <div class="poster-copy">
       <h3>OUR<br><span class="g">STORY</span><br>GOES ON.</h3>
       <div class="circle"></div>
@@ -266,9 +250,9 @@ section{padding:62px 16px}
   </div>
 </section>
 
-<!-- 25장 사진 갤러리 -->
+<!-- 25장 사진 갤러리 (이미지 꽉 차게 수정됨) -->
 <section class="moments">
-  <div class="section-head"><span>02</span><span>Our Moments / 우리의 순간들</span></div>
+  <div class="section-head"><span>02</span><span>Our Moments</span></div>
   <h2>OUR<br>MOMENTS</h2>
   <div class="sub">good days / ordinary days / all ours</div>
 
@@ -304,16 +288,15 @@ section{padding:62px 16px}
   </div>
 </section>
 
+<!-- 챕터 문구 삭제 및 꽉 찬 레이아웃 적용 -->
 <section class="beach">
   <div class="beach-grid">
     <div class="panel"><img src="photo4.jpg" alt="사진"></div>
     <div class="panel type">
-      <div class="micro">Chapter 02 / Beach</div>
       <p class="huge">SEA.<br>WIND.<br>US.</p>
       <div class="line">2026 / 10 / 18 / Sunday</div>
     </div>
     <div class="panel type">
-      <div class="micro">No. 18</div>
       <p class="huge" style="color:var(--green)">JUST<br>LIKE<br>THIS.</p>
       <div class="line">our small archive</div>
     </div>
