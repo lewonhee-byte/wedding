@@ -118,10 +118,10 @@ img{max-width:100%}
 </head>
 <body>
 
-<!-- 배경음악 오디오 및 플로팅 재생 버튼 -->
-<audio id="bgm" src="bgm.mp3" preload="auto" loop></audio>
-<button id="bgmBtn" class="bgm-btn" aria-label="배경음악 재생">
-  <span id="bgmIcon">🎵</span> <span id="bgmText">BGM OFF</span>
+<!-- 배경음악 자동재생 설정 -->
+<audio id="bgm" src="bgm.mp3" preload="auto" loop autoplay></audio>
+<button id="bgmBtn" class="bgm-btn" aria-label="배경음악 제어">
+  <span id="bgmIcon">🎵</span> <span id="bgmText">BGM ON</span>
 </button>
 
 <main class="shell">
@@ -262,26 +262,45 @@ img{max-width:100%}
     targets.forEach(el => el.classList.add('in'));
   }
 
-  // BGM Player Logic
+  // BGM Autoplay & Toggle Logic
   const bgm = document.getElementById('bgm');
   const bgmBtn = document.getElementById('bgmBtn');
   const bgmText = document.getElementById('bgmText');
   let isPlaying = false;
 
+  // 페이지 접속 시 자동 재생 시도
+  bgm.play().then(() => {
+    bgmText.textContent = 'BGM ON 🎵';
+    isPlaying = true;
+  }).catch(err => {
+    console.log("브라우저 자동재생 차단:", err);
+    bgmText.textContent = 'BGM OFF';
+    isPlaying = false;
+
+    // 방문자가 화면을 터치하거나 스크롤하면 음악이 재생되도록 설정 (자동재생 우회)
+    const unlockAudio = () => {
+      bgm.play().then(() => {
+        bgmText.textContent = 'BGM ON 🎵';
+        isPlaying = true;
+        document.removeEventListener('click', unlockAudio);
+        document.removeEventListener('scroll', unlockAudio);
+      }).catch(e => console.log(e));
+    };
+    document.addEventListener('click', unlockAudio, { once: true });
+    document.addEventListener('scroll', unlockAudio, { once: true });
+  });
+
   bgmBtn.addEventListener('click', () => {
     if (isPlaying) {
       bgm.pause();
       bgmText.textContent = 'BGM OFF';
-      bgmBtn.style.opacity = '0.8';
       isPlaying = false;
     } else {
       bgm.play().then(() => {
         bgmText.textContent = 'BGM ON 🎵';
-        bgmBtn.style.opacity = '1';
         isPlaying = true;
       }).catch(err => {
         console.log("재생 실패:", err);
-        alert("음악 파일을 불러오는 중이거나 브라우저에서 차단되었습니다.");
       });
     }
   });
