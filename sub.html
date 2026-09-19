@@ -1,365 +1,288 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>가화만사성 — 이원희 & 양은정</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#f5f2e9" />
+<title>가화만사성 | 이원희 × 양은정</title>
 <style>
 :root{
-  --paper:#f5f4ef;
-  --ink:#111311;
-  --green:#0d5b39;
-  --forest:#214234;
-  --line:rgba(17,19,17,.18);
+  --paper:#f5f2e9;
+  --paper2:#faf8f1;
+  --green:#165b3c;
+  --green-soft:#6f8979;
+  --line:rgba(22,91,60,.22);
+  --max:560px;
+  --pad:18px;
+  --gap:9px;
+  --ease:cubic-bezier(.22,1,.36,1);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;background:#929292;color:var(--ink);
-  font-family:Arial,Helvetica,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
-}
-.wrap{
-  width:min(100%,540px);margin:0 auto;background:var(--paper);overflow:hidden;
-}
-header.hero{
-  min-height:100svh;padding:16px 16px 24px;
-  display:grid;grid-template-rows:auto 1fr auto;
-}
-.micro{
-  font-size:10px;letter-spacing:.16em;text-transform:uppercase;
-}
-.topline{
-  display:flex;justify-content:space-between;gap:14px;
-  padding-bottom:8px;border-bottom:1px solid var(--line);
-}
-.hero-grid{
-  display:grid;grid-template-columns:.88fr 1.12fr;gap:12px;padding-top:14px;min-height:0;
-}
-.hero-type{display:flex;flex-direction:column;justify-content:space-between;min-width:0}
-.hero-title{
-  margin:0;font-size:clamp(54px,16vw,88px);font-weight:800;
-  line-height:.78;letter-spacing:-.08em;text-transform:uppercase;
-}
+html{scroll-behavior:smooth;background:#d9d8d3}
+body{margin:0;background:#d9d8d3;color:var(--green);font-family:Arial,"Apple SD Gothic Neo","Noto Sans KR",sans-serif}
+button{font:inherit;color:inherit}
+img{max-width:100%}
+.shell{width:min(100%,var(--max));margin:0 auto;background:var(--paper);overflow:hidden;position:relative}
+.micro{font-size:10px;line-height:1.35;letter-spacing:.14em;text-transform:uppercase}
+.section{padding:72px var(--pad)}
+.kicker{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:8px;margin-bottom:28px;font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+
+/* Cover */
+.hero{padding:16px var(--pad) 42px;background:var(--paper);min-height:100svh;display:flex;flex-direction:column}
+.hero-top{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-bottom:8px}
+.hero-photo{margin-top:16px;overflow:hidden}
+.hero-photo img{display:block;width:100%;height:auto}
+.hero.ready .hero-photo img{transform:none}
+.hero-copy{margin-top:auto;padding-top:24px}
+.hero-bottom{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:end;border-top:1px solid var(--green);padding-top:12px}
+.hero-title{font-size:clamp(52px,15vw,84px);font-weight:800;letter-spacing:-.085em;line-height:.8;margin:0}
 .hero-title span{display:block}
-.hero-side{
-  writing-mode:vertical-rl;transform:rotate(180deg);
-  font-size:12px;letter-spacing:.12em;margin-top:10px;
-}
-.hero-photo{
-  position:relative;overflow:hidden;min-height:0;
-}
-.hero-photo img{
-  width:100%;height:100%;object-fit:cover;object-position:45% 50%;display:block;
-}
-.stamp{
-  position:absolute;right:8px;top:8px;background:var(--green);color:#fff;
-  padding:9px 10px;font-size:10px;line-height:1.2;font-weight:700;text-transform:uppercase;
-  transform:rotate(2deg)
-}
-.hero-bottom{
-  margin-top:18px;border-top:1px solid var(--ink);padding-top:12px;
-  display:grid;grid-template-columns:1fr auto;align-items:end;gap:14px
-}
-.bigdate{font-size:84px;line-height:.78;letter-spacing:-.08em;font-weight:800}
-.hero-meta{font-size:10px;line-height:1.65;letter-spacing:.12em;text-transform:uppercase;text-align:right}
+.hero-meta{text-align:right;font-size:10px;line-height:1.65;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.hero-names{margin-top:12px;font-size:13px;font-weight:700;letter-spacing:.02em}
 
-section{padding:62px 16px}
-.section-head{
-  display:flex;justify-content:space-between;align-items:flex-start;gap:12px;
-  border-top:1px solid var(--ink);padding-top:8px;margin-bottom:26px;
-  font-size:10px;letter-spacing:.15em;text-transform:uppercase
-}
-.invite{background:#fff;position:relative}
-.invite h2{
-  margin:0 0 34px;font-size:44px;line-height:.92;letter-spacing:-.06em
-}
-.invite p{
-  margin:0 0 0 auto;width:84%;font-size:16px;line-height:1.95;letter-spacing:-.02em
-}
-.invite .vert{
-  position:absolute;left:-2px;top:166px;writing-mode:vertical-rl;transform:rotate(180deg);
-  color:var(--green);font-size:46px;font-weight:800;letter-spacing:-.06em;line-height:.8
-}
+/* BGM Floating Button */
+.bgm-btn{position:fixed;bottom:20px;right:20px;z-index:100;background:var(--green);color:var(--paper);border:none;border-radius:30px;padding:10px 16px;font-size:11px;letter-spacing:.08em;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.2);display:flex;align-items:center;gap:6px;transition:transform .2s}
+.bgm-btn:active{transform:scale(0.95)}
 
-/* editorial full-bleed sequence */
-.sequence{padding:0;background:var(--paper)}
-.full{
-  position:relative;min-height:74svh;overflow:hidden;
-}
-.full img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
-.full .overlay{
-  position:absolute;inset:auto 0 0 0;padding:18px 16px 20px;
-  background:linear-gradient(to top,rgba(0,0,0,.62),rgba(0,0,0,0));
-  color:#fff
-}
-.overlay .cap{font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
-.overlay .big{font-size:48px;line-height:.9;letter-spacing:-.06em;font-weight:800}
+/* Invitation */
+.invite{background:var(--paper2)}
+.invite h2{margin:0 0 26px;font-size:41px;line-height:.95;letter-spacing:-.06em}
+.invite p{margin:0 0 32px auto;width:86%;font-size:15px;line-height:1.95;letter-spacing:-.02em}
+.natural-photo{margin:34px 0 0;overflow:hidden;background:var(--paper)}
+.natural-photo img{display:block;width:100%;height:auto}
+.caption{margin-top:8px;font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:var(--green-soft)}
 
-.poster{
-  padding:0;display:grid;grid-template-columns:40% 60%;min-height:570px;background:#fff
-}
-.poster .side{
-  background:var(--forest);color:#fff;padding:16px 12px;
-  display:flex;flex-direction:column;justify-content:space-between
-}
-.poster .side .vertical{
-  writing-mode:vertical-rl;transform:rotate(180deg);
-  font-size:58px;line-height:.8;font-weight:800;letter-spacing:-.07em
-}
-.poster .main{display:grid;grid-template-rows:54% 46%}
-.poster .main img{width:100%;height:100%;object-fit:cover;display:block}
-.poster-copy{padding:18px;position:relative;overflow:hidden}
-.poster-copy h3{
-  margin:0;font-size:58px;line-height:.84;letter-spacing:-.07em
-}
-.poster-copy .g{color:var(--green)}
-.poster-copy .circle{
-  position:absolute;width:126px;height:126px;border:2px solid var(--ink);border-radius:50%;
-  right:-22px;bottom:-30px
-}
+/* Archive */
+.archive-title{font-size:58px;line-height:.8;letter-spacing:-.08em;margin:0 0 24px;font-weight:800}
+.archive-sub{font-size:11px;line-height:1.5;letter-spacing:.12em;text-transform:uppercase;margin:0 0 24px;color:var(--green-soft)}
+.archive-year{font-size:clamp(90px,28vw,150px);line-height:.78;letter-spacing:-.09em;font-weight:800;margin:38px 0 8px}
+.archive-caption{font-size:10px;line-height:1.5;letter-spacing:.1em;text-transform:uppercase;color:var(--green-soft)}
 
-.moments{background:var(--paper)}
-.moments h2{
-  margin:0 0 12px;font-size:66px;line-height:.8;letter-spacing:-.08em
-}
-.moments .sub{font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:24px}
-.collage{
-  display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start
-}
-.collage img{width:100%;display:block;object-fit:cover;cursor:pointer}
-.wide{grid-column:1/-1;aspect-ratio:4/3}
-.tall{aspect-ratio:3/4}
-.sq{aspect-ratio:1/1}
-.offset{margin-top:46px}
-.pull{
-  grid-column:1/-1;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
-  padding:18px 0;margin:12px 0 6px;display:flex;justify-content:space-between;gap:18px;align-items:flex-end
-}
-.pull .txt{font-size:30px;line-height:1.05;letter-spacing:-.04em;font-weight:700;width:76%}
-.pull .mark{font-size:52px;color:var(--green);line-height:.8}
+.gallery{display:flex;flex-direction:column;gap:var(--gap)}
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap);align-items:start}
+.pair>*{min-width:0;width:100%}
+.pair.equal .photo{aspect-ratio:2/3}
+.pair.equal .photo img{width:100%;height:100%;object-fit:cover;object-position:center center}
+.photo{margin:0;min-width:0;overflow:hidden;background:rgba(22,91,60,.035);position:relative}
+.photo img{display:block;width:100%;height:auto;transform:scale(1);transition:transform .8s var(--ease),filter .8s var(--ease);cursor:zoom-in}
+.photo:hover img{transform:scale(1.018)}
+.photo.full{width:100%}
+.type-card{min-height:0;aspect-ratio:2/3;padding:14px;border-top:1px solid var(--green);border-bottom:1px solid var(--green);display:flex;flex-direction:column;justify-content:space-between;background:transparent}
+.type-card .big{font-size:34px;line-height:.9;font-weight:800;letter-spacing:-.06em}
+.type-card .small{font-size:10px;line-height:1.5;letter-spacing:.1em;text-transform:uppercase}
+.type-card.tall{aspect-ratio:1143/2048}
 
-/* beach editorial */
-.beach{padding:0;background:#fff}
-.beach-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:0
-}
-.beach-grid .panel{position:relative;min-height:430px;overflow:hidden}
-.beach-grid img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;cursor:pointer}
-.beach-grid .type{
-  background:#fff;padding:18px;display:flex;flex-direction:column;justify-content:space-between
-}
-.beach-grid .type .huge{
-  font-size:64px;line-height:.82;letter-spacing:-.08em;font-weight:800;margin:0
-}
-.beach-grid .type .line{
-  border-top:1px solid var(--ink);padding-top:8px;font-size:10px;letter-spacing:.14em;text-transform:uppercase
-}
+/* Wedding info */
+.wedding-day{background:var(--paper2)}
+.wedding-day h2{font-size:clamp(64px,22vw,96px);line-height:.78;letter-spacing:-.09em;margin:0 0 40px}
+.info-row{display:grid;grid-template-columns:76px 1fr;gap:16px;border-top:1px solid var(--line);padding:16px 0;font-size:14px;line-height:1.6}
+.info-row:last-child{border-bottom:1px solid var(--line)}
+.info-row .key{font-size:10px;letter-spacing:.13em;text-transform:uppercase}
+.footer{padding:20px var(--pad);border-top:1px solid var(--green);background:var(--paper2);font-size:9px;letter-spacing:.13em;text-transform:uppercase}
 
-.wedding{background:#fff}
-.wedding-top{
-  display:grid;grid-template-columns:1fr .72fr;gap:14px;margin-bottom:34px
-}
-.wedding h2{
-  margin:0;font-size:72px;line-height:.82;letter-spacing:-.08em
-}
-.sideinfo{
-  border-left:1px solid var(--ink);padding-left:12px;
-  font-size:10px;line-height:1.7;letter-spacing:.11em;text-transform:uppercase
-}
-.row{
-  display:grid;grid-template-columns:74px 1fr;gap:16px;
-  border-top:1px solid var(--line);padding:16px 0;font-size:14px;line-height:1.6
-}
-.row:last-child{border-bottom:1px solid var(--line)}
-.row .k{font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+/* Motion */
+.reveal{opacity:1;transform:none}
+.js .reveal{opacity:0;transform:translateY(24px)}
+.js .reveal.in{opacity:1;transform:none;transition:opacity .65s var(--ease),transform .82s var(--ease)}
+.js .photo.reveal{clip-path:inset(8% 0 0 0);transform:translateY(18px)}
+.js .photo.reveal.in{clip-path:inset(0 0 0 0);transform:none;transition:clip-path .85s var(--ease),transform .85s var(--ease),opacity .55s ease}
+.js .pair .photo:nth-child(2).reveal.in{transition-delay:.07s}
 
-.footer{padding:18px 16px;background:#fff;font-size:9px;letter-spacing:.12em;text-transform:uppercase;border-top:1px solid var(--ink)}
+/* Lightbox */
+#modal{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(4,20,12,.94)}
+#modal.open{display:flex}
+#modal img{max-width:100%;max-height:100%;object-fit:contain;cursor:zoom-out}
 
-/* Modal for Image Preview */
-#imageModal{
-  position:fixed;inset:0;background:rgba(0,0,0,0.85);display:none;justify-content:center;align-items:center;z-index:999;padding:20px;
+@media(max-width:390px){
+  :root{--pad:15px;--gap:7px}
+  .hero-bottom{grid-template-columns:1fr}
+  .hero-title{font-size:48px}
+  .hero-meta{text-align:left;margin-top:8px;white-space:normal}
+  .archive-title{font-size:50px}
+  .type-card{min-height:0}.type-card .big{font-size:29px}
 }
-#imageModal img{
-  max-width:100%;max-height:100%;object-fit:contain;
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero-photo img,.reveal,.photo img{transition:none!important;transform:none!important;opacity:1!important;clip-path:none!important}
 }
-
-@media(min-width:700px){.wrap{margin:36px auto}}
+@media(min-width:700px){.shell{margin:32px auto;box-shadow:0 18px 60px rgba(0,0,0,.12)}}
 </style>
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
-<main class="wrap">
 
-<header class="hero">
-  <div class="topline micro">
-    <span>Wedding Invitation</span>
-    <span>Seoul / 2026</span>
-  </div>
+<audio id="bgm" src="bgm.mp3" preload="auto" loop autoplay></audio>
+<button id="bgmBtn" class="bgm-btn" aria-label="배경음악 제어">
+  <span id="bgmIcon">🎵</span> <span id="bgmText">BGM ON</span>
+</button>
 
-  <div class="hero-grid">
-    <div class="hero-type">
-      <div>
-        <h1 class="hero-title">
-          <span>GAHWA</span>
-          <span>MANSA</span>
-          <span>SEONG</span>
-        </h1>
-        <div class="hero-side">家和萬事成 · WONHEE × EUNJEONG</div>
+<main class="shell">
+  <header class="hero" id="top">
+    <div class="hero-top micro"><span>Wedding Invitation</span><span>Seoul / 2026</span></div>
+    <figure class="hero-photo"><img src="images/photo25.jpg" alt="바닷가에 선 신랑 신부"></figure>
+    <div class="hero-copy">
+      <div class="hero-bottom reveal">
+        <h1 class="hero-title"><span>Gahwa</span><span>Mansaseong</span></h1>
+        <div class="hero-meta">2026.10.18 SUN<br>12:00 PM</div>
       </div>
-      <div class="micro">A SMALL ARCHIVE OF US</div>
+      <div class="hero-names reveal">WONHEE LEE × EUNJEONG YANG · 家和萬事成</div>
+    </div>
+  </header>
+
+  <section class="section invite">
+    <div class="kicker"><span>01</span><span>Invitation / 초대합니다</span></div>
+    <h2 class="reveal">우리의 하루들이<br>하나의 이야기가<br>되었습니다.</h2>
+    <p class="reveal">함께 웃고, 싸우고,<br>또 함께 웃었습니다.<br><br>페스티벌도 가고, 영화를 보고,<br>자전거를 타고, 여행을 다니며<br>참 많은 순간을 함께했습니다.<br><br>좋은 날도, 별것 아닌 날도<br>함께라서 즐거웠고<br><br>그렇게 쌓인 우리의 하루들이<br>어느새 하나의 이야기가 되었습니다.<br><br>이제 그 이야기를<br>평생 함께 이어가려 합니다.</p>
+    <figure class="natural-photo photo reveal"><img src="images/photo01.jpg" alt="모래사장에 적힌 가화만사성"></figure>
+    <div class="caption reveal">Good days / ordinary days / all ours</div>
+  </section>
+
+  <section class="section">
+    <div class="kicker"><span>02</span><span>Beach Archive</span></div>
+    <h2 class="archive-title reveal">SEA.<br>WIND.<br>US.</h2>
+
+    <div class="gallery">
+      <figure class="photo full reveal"><img loading="lazy" src="images/photo20.jpg" alt="바닷가에 앉은 커플"></figure>
+
+      <div class="pair equal">
+        <figure class="photo reveal"><img loading="lazy" src="images/photo16.jpg" alt="바닷가 신부"></figure>
+        <figure class="photo reveal"><img loading="lazy" src="images/photo17.jpg" alt="바닷가 신랑"></figure>
+      </div>
+
+      <figure class="photo full reveal"><img loading="lazy" src="images/photo10.jpg" alt="바닷가 와이드 커플 사진"></figure>
+
+      <div class="pair equal">
+        <figure class="photo reveal"><img loading="lazy" src="images/photo19.jpg" alt="모래를 뿌리며 장난치는 커플"></figure>
+        <figure class="photo reveal"><img loading="lazy" src="images/photo18.jpg" alt="바닷가에서 서로 바라보는 커플"></figure>
+      </div>
+
+      <div class="pair equal">
+        <figure class="photo reveal"><img loading="lazy" src="images/photo13.jpg" alt="꽃을 든 바닷가 커플 클로즈업"></figure>
+        <figure class="photo reveal"><img loading="lazy" src="images/photo14.jpg" alt="바닷가 커플 스냅"></figure>
+      </div>
+
+      <div class="pair equal">
+        <figure class="photo reveal"><img loading="lazy" src="images/photo02.jpg" alt="꽃을 든 바닷가 신랑"></figure>
+        <figure class="photo reveal"><img loading="lazy" src="images/photo15.jpg" alt="꽃을 든 바닷가 커플"></figure>
+      </div>
     </div>
 
-    <div class="hero-photo">
-      <img src="images/photo1.jpg" alt="숲속 웨딩 사진">
-      <div class="stamp">10.18<br>SUN</div>
+    <div class="archive-year reveal">2026</div>
+    <div class="archive-caption reveal">October eighteenth / our small archive</div>
+  </section>
+
+  <section class="section">
+    <div class="kicker"><span>03</span><span>Forest Archive</span></div>
+    <h2 class="archive-title reveal">TOGETHER</h2>
+
+    <div class="gallery">
+      <figure class="photo full reveal"><img loading="lazy" src="images/photo22.jpg" alt="숲 속 신부 가로 사진"></figure>
+
+      <div class="pair equal">
+        <figure class="photo reveal"><img loading="lazy" src="images/photo24.jpg" alt="숲 속 신부"></figure>
+        <figure class="photo reveal"><img loading="lazy" src="images/photo12.jpg" alt="숲 속 신랑 전신"></figure>
+      </div>
+
+      <figure class="photo full reveal"><img loading="lazy" src="images/photo09.jpg" alt="숲 속 신랑 가로 사진"></figure>
+
+      <div class="pair equal">
+        <figure class="photo reveal"><img loading="lazy" src="images/photo21.jpg" alt="숲 속 장난스러운 커플"></figure>
+        <figure class="photo reveal"><img loading="lazy" src="images/photo07.jpg" alt="베일을 함께 쓴 숲 속 커플"></figure>
+      </div>
+
+      <div class="pair equal">
+        <figure class="photo reveal"><img loading="lazy" src="images/photo03.jpg" alt="숲 속 장난스러운 커플 근접 사진"></figure>
+        <figure class="photo reveal"><img loading="lazy" src="images/photo04.jpg" alt="역광 속 신부"></figure>
+      </div>
+
+      <figure class="photo full reveal"><img loading="lazy" src="images/photo08.jpg" alt="숲에서 카메라를 든 신랑"></figure>
+
+      <div class="pair equal">
+        <figure class="photo reveal"><img loading="lazy" src="images/photo05.jpg" alt="숲 속 커플 사진"></figure>
+        <figure class="photo reveal"><img loading="lazy" src="images/photo06.jpg" alt="꽃을 든 숲 속 커플"></figure>
+      </div>
+
+      <div class="pair">
+        <figure class="photo reveal"><img loading="lazy" src="images/photo23.jpg" alt="노을빛 숲 속 커플"></figure>
+        <div class="type-card tall reveal"><div class="big">GOOD<br>DAYS</div><div class="small">좋은 날도, 별것 아닌 날도<br>함께라서 즐거웠습니다.</div></div>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <div class="hero-bottom">
-    <div class="bigdate">10.18</div>
-    <div class="hero-meta">2026 Sunday<br>12:00 PM<br>Lotte Hotel Seoul</div>
-  </div>
-</header>
+  <section class="section wedding-day">
+    <div class="kicker"><span>04</span><span>Wedding Day</span></div>
+    <h2 class="reveal">26.10.18</h2>
+    <div class="info-row reveal"><div class="key">When</div><div>2026년 10월 18일 일요일<br>낮 12시</div></div>
+    <div class="info-row reveal"><div class="key">Where</div><div><a href="https://map.naver.com/p/entry/place/11715781?lng=126.9816208&lat=37.5654272&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202609192328%26locale%3Dko%26svcName%3Dmap_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:inherit">롯데호텔 서울<br>무궁화 · 가람홀</a></div></div>
+    <div class="info-row reveal"><div class="key">Address</div><div>서울특별시 중구 을지로 30</div></div>
+  </section>
 
-<section class="invite">
-  <div class="section-head"><span>01</span><span>Invitation / 초대합니다</span></div>
-  <div class="vert">TOGETHER</div>
-  <h2>우리의 하루들이<br>하나의 이야기가<br>되었습니다.</h2>
-  <p>
-    함께 웃고, 싸우고,<br>
-    또 함께 웃었습니다.<br><br>
-    페스티벌도 가고, 영화를 보고,<br>
-    자전거를 타고, 여행을 다니며<br>
-    참 많은 순간을 함께했습니다.<br><br>
-    좋은 날도, 별것 아닌 날도<br>
-    함께라서 즐거웠고<br><br>
-    그렇게 쌓인 우리의 하루들이<br>
-    어느새 하나의 이야기가 되었습니다.<br><br>
-    이제 그 이야기를<br>
-    평생 함께 이어가려 합니다.<br><br>
-    저희의 새로운 시작에<br>
-    소중한 분들을 초대합니다.
-  </p>
-</section>
-
-<section class="sequence">
-  <div class="full">
-    <img src="images/photo2.jpg" alt="숲에서 함께 서 있는 두 사람">
-    <div class="overlay">
-      <div class="cap">Chapter 01 / Forest</div>
-      <div class="big">GOOD DAYS.<br>ORDINARY DAYS.</div>
-    </div>
-  </div>
-</section>
-
-<section class="poster">
-  <div class="side">
-    <div class="micro">WONHEE LEE<br>×<br>EUNJEONG YANG</div>
-    <div class="vertical">ANTHOLOGY</div>
-    <div class="micro">VOL. 2026 / SEOUL</div>
-  </div>
-  <div class="main">
-    <img src="images/photo3.jpg" alt="숲속 장난스러운 웨딩 사진">
-    <div class="poster-copy">
-      <h3>OUR<br><span class="g">STORY</span><br>GOES ON.</h3>
-      <div class="circle"></div>
-    </div>
-  </div>
-</section>
-
-<section class="moments">
-  <div class="section-head"><span>02</span><span>Our Moments / 우리의 순간들</span></div>
-  <h2>OUR<br>MOMENTS</h2>
-  <div class="sub">good days / ordinary days / all ours</div>
-
-  <div class="collage">
-    <img class="wide" src="images/photo4.jpg" alt="서로 기대어 웃는 두 사람">
-    <img class="tall" src="images/photo1.jpg" alt="신부 단독 사진">
-    <img class="tall offset" src="images/photo2.jpg" alt="숲속 신랑 단독 사진">
-
-    <div class="pull">
-      <div class="txt">좋은 날도,<br>별것 아닌 날도,<br>함께라서 즐거웠습니다.</div>
-      <div class="mark">＊</div>
-    </div>
-
-    <img class="wide" src="images/photo3.jpg" alt="숲속에서 함께 서 있는 두 사람">
-    <img class="sq" src="images/photo4.jpg" alt="함께 웃는 두 사람">
-    <img class="sq offset" src="images/photo1.jpg" alt="서로 바라보는 두 사람">
-    <img class="wide" src="images/photo2.jpg" alt="햇살 아래 함께 있는 두 사람">
-    <img class="wide" src="images/photo3.jpg" alt="햇살 속 신부">
-  </div>
-</section>
-
-<section class="beach">
-  <div class="beach-grid">
-    <div class="panel"><img src="images/photo4.jpg" alt="바닷가의 두 사람"></div>
-    <div class="panel type">
-      <div class="micro">Chapter 02 / Beach</div>
-      <p class="huge">SEA.<br>WIND.<br>US.</p>
-      <div class="line">2026 / 10 / 18 / Sunday</div>
-    </div>
-    <div class="panel type">
-      <div class="micro">No. 18</div>
-      <p class="huge" style="color:var(--green)">JUST<br>LIKE<br>THIS.</p>
-      <div class="line">our small archive</div>
-    </div>
-    <div class="panel"><img src="images/photo1.jpg" alt="바닷가에서 웃는 두 사람"></div>
-  </div>
-</section>
-
-<section class="sequence">
-  <div class="full">
-    <img src="images/photo2.jpg" alt="바닷가 장난스러운 사진">
-    <div class="overlay">
-      <div class="cap">Chapter 03 / Play</div>
-      <div class="big">LAUGH,<br>AND KEEP GOING.</div>
-    </div>
-  </div>
-</section>
-
-<section class="moments" style="padding-top:54px">
-  <div class="collage">
-    <img class="tall" src="images/photo3.jpg" alt="바닷가 신랑 단독 사진">
-    <img class="tall offset" src="images/photo4.jpg" alt="바닷가 신부 옆모습">
-    <img class="wide" src="images/photo1.jpg" alt="바닷가 신부와 부케">
-    <img class="sq" src="images/photo2.jpg" alt="바닷가에서 가까이 선 두 사람">
-    <img class="sq offset" src="images/photo3.jpg" alt="바닷가 장난스러운 두 사람">
-  </div>
-</section>
-
-<section class="wedding">
-  <div class="section-head"><span>03</span><span>Wedding Day</span></div>
-  <div class="wedding-top">
-    <h2>2026©<br>10.18</h2>
-    <div class="sideinfo">
-      Sunday<br>Noon<br>Seoul<br><br>
-      Family<br>Friends<br>Us
-    </div>
-  </div>
-
-  <div class="row"><div class="k">When</div><div>2026년 10월 18일 일요일<br>낮 12시</div></div>
-  <div class="row"><div class="k">Where</div><div>롯데호텔 서울<br>무궁화 · 가람홀</div></div>
-  <div class="row"><div class="k">Address</div><div>서울특별시 중구 을지로 30</div></div>
-</section>
-
-<div class="footer">© 2026 WONHEE LEE × EUNJEONG YANG · WEDDING INVITATION</div>
+  <div class="footer">© 2026 WONHEE LEE × EUNJEONG YANG</div>
 </main>
 
-<!-- Modal -->
-<div id="imageModal" onclick="closeModal()">
-  <img id="modalImg" src="" alt="확대 이미지">
-</div>
-
+<div id="modal" aria-hidden="true"><img alt="확대 이미지"></div>
 <script>
-// Image Modal Preview
-document.querySelectorAll('.wrap img').forEach(img => {
-  img.addEventListener('click', () => {
-    document.getElementById('modalImg').src = img.src;
-    document.getElementById('imageModal').style.display = 'flex';
+(() => {
+  const hero = document.querySelector('.hero');
+  requestAnimationFrame(() => hero.classList.add('ready'));
+
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const targets = [...document.querySelectorAll('.reveal')];
+  if (!reduced && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold:.08, rootMargin:'0px 0px -5%' });
+    targets.forEach(el => io.observe(el));
+  } else {
+    targets.forEach(el => el.classList.add('in'));
+  }
+
+  const bgm = document.getElementById('bgm');
+  const bgmBtn = document.getElementById('bgmBtn');
+  const bgmText = document.getElementById('bgmText');
+  let isPlaying = false;
+
+  bgm.play().then(() => {
+    bgmText.textContent = 'BGM ON 🎵';
+    isPlaying = true;
+  }).catch(err => {
+    console.log("자동재생 차단:", err);
+    bgmText.textContent = 'BGM OFF';
+    isPlaying = false;
   });
-});
-function closeModal(){
-  document.getElementById('imageModal').style.display = 'none';
-}
+
+  bgmBtn.addEventListener('click', () => {
+    if (isPlaying) {
+      bgm.pause();
+      bgmText.textContent = 'BGM OFF';
+      isPlaying = false;
+    } else {
+      bgm.play().then(() => {
+        bgmText.textContent = 'BGM ON 🎵';
+        isPlaying = true;
+      }).catch(err => {
+        console.log("재생 실패:", err);
+      });
+    }
+  });
+
+  const modal = document.getElementById('modal');
+  const modalImg = modal.querySelector('img');
+  document.querySelectorAll('.shell img').forEach(img => img.addEventListener('click', () => {
+    modalImg.src = img.src;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+  }));
+  modal.addEventListener('click', () => {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+  });
+})();
 </script>
 </body>
 </html>
