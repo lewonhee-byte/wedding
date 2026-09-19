@@ -22,7 +22,7 @@ body{
   width:min(100%,540px);margin:0 auto;background:var(--paper);overflow:hidden;
 }
 header.hero{
-  padding:24px 16px;
+  padding:24px 16px; background:var(--paper);
 }
 .micro{
   font-size:10px;letter-spacing:.16em;text-transform:uppercase;
@@ -31,7 +31,6 @@ header.hero{
   display:flex;justify-content:space-between;gap:14px;
   padding-bottom:8px;border-bottom:1px solid var(--line);margin-bottom:20px;
 }
-/* 타이틀이 사진 위로 오도록 상하 배치 및 크기 최적화 */
 .hero-title{
   margin:0 0 12px 0;font-size:clamp(44px, 13vw, 76px);font-weight:800;
   line-height:.85;letter-spacing:-.06em;text-transform:uppercase;
@@ -61,8 +60,8 @@ header.hero{
 
 section{padding:50px 16px}
 
-/* 초대장 섹션: INVITATION 삭제 및 본문 위로 배치 */
-.invite{background:#fff;position:relative;padding-top:30px;}
+/* 초대장 섹션: 번호 및 Invitation 완전 삭제, 톤 일치 */
+.invite{background:var(--paper);position:relative;padding-top:20px;}
 .invite h2{
   margin:0 0 24px;font-size:38px;line-height:1.1;letter-spacing:-.04em
 }
@@ -70,7 +69,6 @@ section{padding:50px 16px}
   margin:0;width:100%;font-size:15px;line-height:1.9;letter-spacing:-.01em
 }
 
-/* 챕터 삭제 및 이미지 꽉 차게 설정 */
 .sequence{padding:0;background:var(--paper)}
 .full{
   position:relative;min-height:74svh;overflow:hidden;
@@ -85,7 +83,7 @@ section{padding:50px 16px}
 .overlay .big{font-size:48px;line-height:.9;letter-spacing:-.06em;font-weight:800}
 
 .poster{
-  padding:0;display:grid;grid-template-columns:40% 60%;min-height:570px;background:#fff
+  padding:0;display:grid;grid-template-columns:40% 60%;min-height:570px;background:var(--paper)
 }
 .poster .side{
   background:var(--forest);color:#fff;padding:16px 12px;
@@ -97,7 +95,7 @@ section{padding:50px 16px}
 }
 .poster .main{display:grid;grid-template-rows:54% 46%}
 .poster .main img{width:100%;height:100%;object-fit:cover;display:block}
-.poster-copy{padding:18px;position:relative;overflow:hidden}
+.poster-copy{padding:18px;position:relative;overflow:hidden;background:var(--paper)}
 .poster-copy h3{
   margin:0;font-size:58px;line-height:.84;letter-spacing:-.07em
 }
@@ -127,15 +125,14 @@ section{padding:50px 16px}
 .pull .txt{font-size:24px;line-height:1.2;letter-spacing:-.03em;font-weight:700;width:76%}
 .pull .mark{font-size:42px;color:var(--green);line-height:.8}
 
-/* 비치 에디토리얼: 챕터 삭제 및 이미지 꽉 차게 수정 */
-.beach{padding:0;background:#fff}
+.beach{padding:0;background:var(--paper)}
 .beach-grid{
   display:grid;grid-template-columns:1fr 1fr;gap:0
 }
 .beach-grid .panel{position:relative;min-height:350px;overflow:hidden}
 .beach-grid img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;cursor:pointer}
 .beach-grid .type{
-  background:#fff;padding:24px;display:flex;flex-direction:column;justify-content:center;
+  background:var(--paper);padding:24px;display:flex;flex-direction:column;justify-content:center;
 }
 .beach-grid .type .huge{
   font-size:48px;line-height:.9;letter-spacing:-.06em;font-weight:800;margin:0 0 12px 0;
@@ -144,7 +141,7 @@ section{padding:50px 16px}
   border-top:1px solid var(--ink);padding-top:8px;font-size:10px;letter-spacing:.14em;text-transform:uppercase
 }
 
-.wedding{background:#fff}
+.wedding{background:var(--paper)}
 .wedding-top{
   display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:24px
 }
@@ -158,13 +155,13 @@ section{padding:50px 16px}
 .row:last-child{border-bottom:1px solid var(--line)}
 .row .k{font-size:10px;letter-spacing:.14em;text-transform:uppercase}
 
-.account-section{background:#fff;border-top:1px solid var(--ink)}
-.account-box{border:1px solid var(--line);padding:16px;margin-bottom:14px;background:var(--paper)}
+.account-section{background:var(--paper);border-top:1px solid var(--ink)}
+.account-box{border:1px solid var(--line);padding:16px;margin-bottom:14px;background:#fff}
 .account-title{font-size:12px;font-weight:bold;margin-bottom:8px;letter-spacing:.08em;display:flex;justify-content:space-between;align-items:center}
 .account-detail{font-size:13px;line-height:1.6;color:#333}
 .copy-btn{background:var(--green);color:#fff;border:none;padding:4px 8px;font-size:10px;cursor:pointer;letter-spacing:.05em}
 
-.footer{padding:18px 16px;background:#fff;font-size:9px;letter-spacing:.12em;text-transform:uppercase;border-top:1px solid var(--ink)}
+.footer{padding:18px 16px;background:var(--paper);font-size:9px;letter-spacing:.12em;text-transform:uppercase;border-top:1px solid var(--ink)}
 
 /* Modal for Image Preview */
 #imageModal{
@@ -186,7 +183,6 @@ section{padding:50px 16px}
     <span>Seoul / 2026</span>
   </div>
 
-  <!-- 가화만사성 영어가 사진보다 위로 오도록 배치 -->
   <div>
     <h1 class="hero-title">
       <span>GAHWA</span>
@@ -208,7 +204,6 @@ section{padding:50px 16px}
 </header>
 
 <section class="invite">
-  <div class="section-head"><span>01</span><span>Invitation</span></div>
   <h2>우리의 하루들이<br>하나의 이야기가<br>되었습니다.</h2>
   <p>
     함께 웃고, 싸우고,<br>
@@ -250,9 +245,8 @@ section{padding:50px 16px}
   </div>
 </section>
 
-<!-- 25장 사진 갤러리 (이미지 꽉 차게 수정됨) -->
+<!-- 25장 사진 갤러리 -->
 <section class="moments">
-  <div class="section-head"><span>02</span><span>Our Moments</span></div>
   <h2>OUR<br>MOMENTS</h2>
   <div class="sub">good days / ordinary days / all ours</div>
 
@@ -288,7 +282,6 @@ section{padding:50px 16px}
   </div>
 </section>
 
-<!-- 챕터 문구 삭제 및 꽉 찬 레이아웃 적용 -->
 <section class="beach">
   <div class="beach-grid">
     <div class="panel"><img src="photo4.jpg" alt="사진"></div>
@@ -305,9 +298,8 @@ section{padding:50px 16px}
 </section>
 
 <section class="wedding">
-  <div class="section-head"><span>03</span><span>Wedding Day</span></div>
   <div class="wedding-top">
-    <h2>2026©<br>10.18</h2>
+    <h2>2026<br>10.18</h2>
   </div>
 
   <div class="row"><div class="k">When</div><div>2026년 10월 18일 일요일<br>낮 12시</div></div>
@@ -316,8 +308,8 @@ section{padding:50px 16px}
 </section>
 
 <section class="account-section">
-  <div class="section-head"><span>04</span><span>Account / 마음 전하실 곳</span></div>
-  <div style="padding: 24px 16px;">
+  <div class="section-head" style="border-top:none; padding-top:0; margin-bottom:16px;"><span>Account / 마음 전하실 곳</span></div>
+  <div style="padding: 0 0 24px 0;">
     <div class="account-box">
       <div class="account-title"><span>신랑 이원희</span> <button class="copy-btn" onclick="copyAccount('신한 110-229-952230', this)">계좌 복사</button></div>
       <div class="account-detail">신한 110-229-952230<br>예금주: 이원희</div>
