@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
 <meta name="theme-color" content="#f5f2e9" />
 <title>가화만사성 | 이원희 × 양은정</title>
+
+<!-- 카카오톡/문자 공유 시 보이는 썸네일 및 제목 설정 -->
+<meta property="og:title" content="가화만사성 | 이원희 × 양은정">
+<meta property="og:description" content="2026년 10월 18일 결혼합니다. 우리의 하루들이 하나의 이야기가 되었습니다.">
+<meta property="og:image" content="images/photo25.jpg">
+
 <style>
 :root{
   --paper:#f5f2e9;
@@ -268,16 +274,14 @@ img{max-width:100%}
   const bgmText = document.getElementById('bgmText');
   let isPlaying = false;
 
-  // 페이지 접속 시 자동 재생 시도
   bgm.play().then(() => {
     bgmText.textContent = 'BGM ON 🎵';
     isPlaying = true;
   }).catch(err => {
-    console.log("브라우저 자동재생 차단:", err);
+    console.log("자동재생 차단:", err);
     bgmText.textContent = 'BGM OFF';
     isPlaying = false;
 
-    // 방문자가 화면을 터치하거나 스크롤하면 음악이 재생되도록 설정 (자동재생 우회)
     const unlockAudio = () => {
       bgm.play().then(() => {
         bgmText.textContent = 'BGM ON 🎵';
