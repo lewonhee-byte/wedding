@@ -19,40 +19,51 @@ button{font:inherit}
 .rule{height:1px;background:var(--line);margin:0 var(--pad)}
 .micro{font-size:10px;line-height:1.35;letter-spacing:.13em;text-transform:uppercase}
 .kicker{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:8px;margin-bottom:28px;font-size:10px;letter-spacing:.13em;text-transform:uppercase}
-.hero{padding:16px var(--pad) 40px;min-height:100svh;display:flex;flex-direction:column;gap:14px}
+
+/* 히어로 섹션: 가화만사성 메인 타이틀 최상단 배치 */
+.hero{padding:20px var(--pad) 40px;display:flex;flex-direction:column;gap:14px}
 .hero-top{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:8px}
-.hero-photo{position:relative;overflow:hidden;aspect-ratio:3/4;min-height:0;cursor:pointer}
+.hero-title-area{margin:10px 0 4px}
+.hero-main-title{font-size:clamp(42px,12vw,64px);font-weight:800;letter-spacing:-.07em;line-height:.9;margin:0 0 6px}
+.hero-sub-title{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--green-soft);font-weight:600}
+.hero-photo{position:relative;overflow:hidden;aspect-ratio:3/4;min-height:0;cursor:pointer;margin-top:8px}
 .hero-photo img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.03);transition:transform 1.8s var(--ease)}
 .hero.is-ready .hero-photo img{transform:scale(1)}
 .hero-meta{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end;border-top:1px solid var(--green);padding-top:11px}
 .hero-name{font-size:15px;line-height:1.1;font-weight:700;letter-spacing:-.03em}
 .hero-date{text-align:right;font-size:11px;line-height:1.55;letter-spacing:.06em}
-.hero-big{font-size:clamp(64px,17vw,94px);font-weight:800;letter-spacing:-.085em;line-height:.78;margin:6px 0 0}
+.hero-big{font-size:clamp(48px,13vw,76px);font-weight:800;letter-spacing:-.08em;line-height:.82;margin:12px 0 0}
 .hero-big span{display:block}
 .hero-copy{font-size:14px;line-height:1.7;margin-top:8px}
+
 .invite{background:#fbfaf6}
 .invite h2{font-size:40px;line-height:.94;letter-spacing:-.06em;margin:0 0 28px}
 .invite p{margin:0 0 0 auto;width:86%;font-size:15px;line-height:1.95;letter-spacing:-.015em}
+
 .archive-title{font-size:54px;line-height:.82;letter-spacing:-.075em;margin:0 0 28px;font-weight:800}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;align-items:stretch}
 .tile{min-height:122px;position:relative;overflow:hidden;background:rgba(21,86,59,.04);border:1px solid rgba(21,86,59,.08)}
 .tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s var(--ease);cursor:pointer}
 .tile:hover img{transform:scale(1.035)}
-.tile.type{padding:9px;border:none;background:transparent;display:flex;align-items:flex-start;justify-content:flex-start;font-size:16px;font-weight:700;line-height:1.02;letter-spacing:-.04em}
+.tile.type{padding:9px;border:none;background:transparent;display:flex;align-items:flex-start;justify-content:flex-start;font-size:15px;font-weight:700;line-height:1.02;letter-spacing:-.04em}
 .tile.type.small{font-size:11px;line-height:1.2;font-weight:600;letter-spacing:0}
 .tile.span2{grid-column:span 2}.tile.tall{grid-row:span 2;min-height:251px}.tile.wide{grid-column:span 2;min-height:160px}
+
 .big-year{font-size:112px;line-height:.78;letter-spacing:-.08em;font-weight:800;margin:32px 0 8px}
 .caption{font-size:10px;line-height:1.5;letter-spacing:.08em;text-transform:uppercase;color:var(--green-soft)}
+
 .forest-collage{display:grid;grid-template-columns:1fr 1fr;gap:9px;align-items:start}
 .forest-collage figure{margin:0;overflow:hidden}
 .forest-collage img{display:block;width:100%;height:auto;cursor:pointer}
 .forest-collage .offset{margin-top:54px}
 .forest-collage .wide{grid-column:1/-1}
 .pullquote{grid-column:1/-1;border-top:1px solid var(--green);border-bottom:1px solid var(--green);padding:18px 0;margin:10px 0;font-size:27px;font-weight:700;line-height:1.1;letter-spacing:-.05em}
+
 .wedding-day h2{font-size:92px;line-height:.78;letter-spacing:-.085em;margin:0 0 38px}
 .info-row{display:grid;grid-template-columns:78px 1fr;gap:14px;border-top:1px solid var(--line);padding:15px 0;font-size:14px;line-height:1.55}
 .info-row:last-of-type{border-bottom:1px solid var(--line)}
 .info-row .key{font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+
 .account{background:#fbfaf6}
 .account-box{border-top:1px solid var(--line);padding:15px 0}
 .account-head{display:flex;align-items:center;justify-content:space-between;gap:14px}
@@ -62,7 +73,7 @@ button{font:inherit}
 .copy:active{transform:scale(.98)}.copy:hover{background:var(--green);color:var(--paper)}
 .footer{padding:20px var(--pad);border-top:1px solid var(--green);font-size:9px;letter-spacing:.13em;text-transform:uppercase;background:#fbfaf6}
 
-/* 모달 및 슬라이드 버튼 스타일 */
+/* 모달 및 슬라이드 버튼 */
 #imageModal{position:fixed;inset:0;background:rgba(0,0,0,0.9);display:none;justify-content:center;align-items:center;z-index:99;padding:10px}
 #imageModal.open{display:flex}
 #imageModal img{max-width:90%;max-height:85vh;object-fit:contain;border-radius:4px}
@@ -78,15 +89,24 @@ button{font:inherit}
 </head>
 <body>
 <main class="shell">
+  <!-- 히어로 섹션: 가화만사성 타이틀 최상단 메인 배치 -->
   <header class="hero" id="top">
     <div class="hero-top micro"><span>Wedding Invitation</span><span>Seoul / 2026</span></div>
+    
+    <div class="hero-title-area reveal">
+      <h1 class="hero-main-title">가화만사성</h1>
+      <div class="hero-sub-title">家和萬事成 · GAHWA MANSA SEONG</div>
+    </div>
+
     <div class="hero-photo"><img class="parallax" src="photo1.jpg" alt="메인 웨딩 사진"></div>
+    
     <div class="hero-meta reveal">
       <div class="hero-name">WONHEE LEE<br>× EUNJEONG YANG</div>
       <div class="hero-date">2026.10.18 SUN<br>12:00 PM<br>LOTTE HOTEL SEOUL</div>
     </div>
+    
     <div class="hero-big reveal"><span>OUR DAYS</span><span>BECOME ONE.</span></div>
-    <div class="hero-copy reveal">家和萬事成 · 우리의 하루들이 하나의 이야기가 되었습니다.</div>
+    <div class="hero-copy reveal">우리의 하루들이 하나의 이야기가 되었습니다.</div>
   </header>
 
   <section class="section invite">
@@ -95,6 +115,7 @@ button{font:inherit}
     <p class="reveal">함께 웃고, 싸우고,<br>또 함께 웃었습니다.<br><br>페스티벌도 가고, 영화를 보고,<br>자전거를 타고, 여행을 다니며<br>참 많은 순간을 함께했습니다.<br><br>좋은 날도, 별것 아닌 날도<br>함께라서 즐거웠고<br><br>그렇게 쌓인 우리의 하루들이<br>어느새 하나의 이야기가 되었습니다.<br><br>이제 그 이야기를<br>평생 함께 이어가려 합니다.</p>
   </section>
 
+  <!-- 바다 아카이브 그리드 (photo2 ~ photo8) -->
   <section class="section">
     <div class="kicker"><span>02</span><span>Beach Archive</span></div>
     <h2 class="archive-title reveal">SEA.<br>WIND.<br>US.</h2>
@@ -115,6 +136,7 @@ button{font:inherit}
     <div class="caption reveal">A small archive of us / October eighteenth</div>
   </section>
 
+  <!-- 숲속 콜라주 (photo9 ~ photo15) -->
   <section class="section">
     <div class="kicker"><span>03</span><span>Forest Moments</span></div>
     <h2 class="archive-title reveal">TOGETHER</h2>
@@ -130,7 +152,7 @@ button{font:inherit}
     </div>
   </section>
 
-  <!-- 추가 갤러리 섹션 (나머지 10장 photo16 ~ photo25 매칭) -->
+  <!-- 추가 모먼트 갤러리 (photo16 ~ photo25) -->
   <section class="section">
     <div class="kicker"><span>04</span><span>More Moments</span></div>
     <h2 class="archive-title reveal">OUR<br>MOMENTS</h2>
@@ -171,7 +193,7 @@ button{font:inherit}
   <div class="footer">© 2026 WONHEE LEE × EUNJEONG YANG</div>
 </main>
 
-<!-- Modal with Next/Prev Slider -->
+<!-- 모달 및 슬라이드 네비게이션 -->
 <div id="imageModal" aria-hidden="true">
   <button class="modal-close" onclick="closeModal()">×</button>
   <button class="modal-btn modal-prev" onclick="changeImage(-1)">&#10094;</button>
@@ -206,7 +228,6 @@ button{font:inherit}
     catch { prompt('계좌번호를 복사해 주세요.', value); }
   }));
 
-  // Image Modal & Slider Logic for all 25 images
   const modal = document.getElementById('imageModal');
   const modalImg = modal.querySelector('img');
   const allImages = Array.from(document.querySelectorAll('.shell img')).map(img => img.src);
