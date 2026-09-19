@@ -92,7 +92,7 @@ section{padding:50px 16px}
 }
 .poster-copy .g{color:var(--green)}
 
-/* 갤러리 영역: 깔끔한 2열(2-Column) 그리드 배치로 스크롤 압축 */
+/* 갤러리 영역: 세로 사진은 2열, 가로 사진(.wide)은 1열 전체 차지(원본 비율 유지) */
 .moments{background:var(--paper)}
 .moments h2{
   margin:0 0 12px;font-size:56px;line-height:.9;letter-spacing:-.06em
@@ -100,20 +100,27 @@ section{padding:50px 16px}
 .moments .sub{font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:24px}
 .collage{
   display:grid;
-  grid-template-columns: repeat(2, 1fr); /* 2열 배치 */
+  grid-template-columns: repeat(2, 1fr);
   gap: 10px;
 }
 .collage img{
   width:100%;
   height:100%;
   object-fit:cover;
-  aspect-ratio: 3/4; /* 사진 비율 통일감 있게 정돈 */
+  aspect-ratio: 3/4;
   display:block;
   cursor:pointer;
   border-radius:4px;
 }
+/* 가로 사진은 잘리지 않도록 전체 너비(2열 병합) 및 원본 비율 적용 */
+.collage img.wide {
+  grid-column: 1 / -1;
+  aspect-ratio: auto;
+  height: auto;
+  object-fit: contain;
+}
 .pull{
-  grid-column: 1 / -1; /* 인용구는 2열 전체 차지 */
+  grid-column: 1 / -1;
   border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
   padding:18px 0;margin:12px 0;display:flex;justify-content:space-between;gap:18px;align-items:flex-end
 }
@@ -123,7 +130,7 @@ section{padding:50px 16px}
 .beach{padding:0 16px;background:var(--paper)}
 .beach-grid{
   display:grid;
-  grid-template-columns: repeat(2, 1fr); /* 비치 섹션도 2열 그리드 */
+  grid-template-columns: repeat(2, 1fr);
   gap: 10px;
 }
 .beach-grid img{
@@ -135,7 +142,14 @@ section{padding:50px 16px}
   border-radius:4px;
   cursor:pointer;
 }
+.beach-grid img.wide {
+  grid-column: 1 / -1;
+  aspect-ratio: auto;
+  height: auto;
+  object-fit: contain;
+}
 .beach-text-box{
+  grid-column: 1 / -1;
   background:#fff;padding:20px;border:1px solid var(--line);border-radius:4px;text-align:center;
   display:flex;flex-direction:column;justify-content:center;
 }
@@ -168,7 +182,7 @@ section{padding:50px 16px}
 
 .footer{padding:18px 16px;background:var(--paper);font-size:9px;letter-spacing:.12em;text-transform:uppercase;border-top:1px solid var(--ink)}
 
-/* Modal with Navigation Buttons */
+/* Modal with Next/Prev Navigation */
 #imageModal{
   position:fixed;inset:0;background:rgba(0,0,0,0.9);display:none;justify-content:center;align-items:center;z-index:999;padding:10px;
 }
@@ -256,7 +270,7 @@ section{padding:50px 16px}
   </div>
 </section>
 
-<!-- 2열 그리드 갤러리 -->
+<!-- 2열 그리드 갤러리 (가로 사진은 wide 클래스로 안 잘리게 처리) -->
 <section class="moments">
   <h2>OUR<br>MOMENTS</h2>
   <div class="sub">good days / ordinary days / all ours</div>
@@ -267,15 +281,9 @@ section{padding:50px 16px}
     <img src="photo6.jpg" alt="사진 6">
     <img src="photo7.jpg" alt="사진 7">
     <img src="photo8.jpg" alt="사진 8">
-    <img src="photo9.jpg" alt="사진 9">
+    <img class="wide" src="photo9.jpg" alt="사진 9"> <!-- 가로 사진 -->
     <img src="photo10.jpg" alt="사진 10">
-    <img src="photo11.jpg" alt="사진 11">
-    
-    <div class="pull">
-      <div class="txt">좋은 날도,<br>별것 아닌 날도,<br>함께라서 즐거웠습니다.</div>
-      <div class="mark">＊</div>
-    </div>
-
+    <img class="wide" src="photo11.jpg" alt="사진 11"> <!-- 가로 사진 -->
     <img src="photo12.jpg" alt="사진 12">
     <img src="photo13.jpg" alt="사진 13">
     <img src="photo14.jpg" alt="사진 14">
@@ -286,10 +294,15 @@ section{padding:50px 16px}
     <img src="photo19.jpg" alt="사진 19">
     <img src="photo20.jpg" alt="사진 20">
     <img src="photo21.jpg" alt="사진 21">
+    
+    <div class="pull">
+      <div class="txt">좋은 날도,<br>별것 아닌 날도,<br>함께라서 즐거웠습니다.</div>
+      <div class="mark">＊</div>
+    </div>
   </div>
 </section>
 
-<!-- 비치/마무리 섹션도 2열 그리드 활용 -->
+<!-- 비치/마무리 섹션 -->
 <section class="beach">
   <div class="beach-grid">
     <img src="photo22.jpg" alt="사진 22">
@@ -297,13 +310,13 @@ section{padding:50px 16px}
       <p class="huge">SEA.<br>WIND.<br>US.</p>
       <div class="line">2026 / 10 / 18 / Sunday</div>
     </div>
-    <img src="photo23.jpg" alt="사진 23">
+    <img class="wide" src="photo23.jpg" alt="사진 23"> <!-- 가로 사진 -->
     <img src="photo24.jpg" alt="사진 24">
     <div class="beach-text-box">
       <p class="huge" style="color:var(--green)">JUST<br>LIKE<br>THIS.</p>
       <div class="line">our small archive</div>
     </div>
-    <img src="photo25.jpg" alt="사진 25">
+    <img class="wide" src="photo25.jpg" alt="사진 25"> <!-- 가로 사진 -->
   </div>
 </section>
 
