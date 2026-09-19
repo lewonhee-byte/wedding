@@ -41,15 +41,16 @@ header.hero{
   font-size:11px;letter-spacing:.12em;margin-bottom:16px;color:var(--forest);font-weight:600;
 }
 .hero-photo{
-  position:relative;overflow:hidden;width:100%;aspect-ratio:3/4;margin-top:10px;
+  position:relative;overflow:hidden;width:100%;margin-top:10px;
 }
+/* 메인 사진 원본 비율 보존 */
 .hero-photo img{
-  width:100%;height:100%;object-fit:cover;object-position:center;display:block;
+  width:100%;height:auto;display:block;
 }
 .stamp{
   position:absolute;right:8px;top:8px;background:var(--green);color:#fff;
   padding:9px 10px;font-size:10px;line-height:1.2;font-weight:700;text-transform:uppercase;
-  transform:rotate(2deg)
+  transform:rotate(2deg);z-index:2;
 }
 .hero-bottom{
   margin-top:24px;border-top:1px solid var(--ink);padding-top:12px;
@@ -60,7 +61,6 @@ header.hero{
 
 section{padding:50px 16px}
 
-/* 초대장 섹션: 번호 및 Invitation 완전 삭제, 톤 일치 */
 .invite{background:var(--paper);position:relative;padding-top:20px;}
 .invite h2{
   margin:0 0 24px;font-size:38px;line-height:1.1;letter-spacing:-.04em
@@ -69,11 +69,12 @@ section{padding:50px 16px}
   margin:0;width:100%;font-size:15px;line-height:1.9;letter-spacing:-.01em
 }
 
-.sequence{padding:0;background:var(--paper)}
+/* 시퀀스 사진 원본 비율 보존 */
+.sequence{padding:0 16px;background:var(--paper)}
 .full{
-  position:relative;min-height:74svh;overflow:hidden;
+  position:relative;width:100%;overflow:hidden;margin-bottom:16px;
 }
-.full img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.full img{width:100%;height:auto;display:block;}
 .full .overlay{
   position:absolute;inset:auto 0 0 0;padding:18px 16px 20px;
   background:linear-gradient(to top,rgba(0,0,0,.62),rgba(0,0,0,0));
@@ -83,61 +84,64 @@ section{padding:50px 16px}
 .overlay .big{font-size:48px;line-height:.9;letter-spacing:-.06em;font-weight:800}
 
 .poster{
-  padding:0;display:grid;grid-template-columns:40% 60%;min-height:570px;background:var(--paper)
+  padding:0 16px;display:grid;grid-template-columns:40% 60%;background:var(--paper);gap:10px;align-items:center;margin-bottom:16px;
 }
 .poster .side{
-  background:var(--forest);color:#fff;padding:16px 12px;
+  background:var(--forest);color:#fff;padding:16px 12px;height:100%;
   display:flex;flex-direction:column;justify-content:space-between
 }
 .poster .side .vertical{
   writing-mode:vertical-rl;transform:rotate(180deg);
-  font-size:58px;line-height:.8;font-weight:800;letter-spacing:-.07em
+  font-size:48px;line-height:.8;font-weight:800;letter-spacing:-.07em
 }
-.poster .main{display:grid;grid-template-rows:54% 46%}
-.poster .main img{width:100%;height:100%;object-fit:cover;display:block}
+.poster .main img{width:100%;height:auto;display:block}
 .poster-copy{padding:18px;position:relative;overflow:hidden;background:var(--paper)}
 .poster-copy h3{
-  margin:0;font-size:58px;line-height:.84;letter-spacing:-.07em
+  margin:0;font-size:42px;line-height:.84;letter-spacing:-.07em
 }
 .poster-copy .g{color:var(--green)}
-.poster-copy .circle{
-  position:absolute;width:126px;height:126px;border:2px solid var(--ink);border-radius:50%;
-  right:-22px;bottom:-30px
-}
 
+/* 갤러리 25장: 사진이 잘리지 않고 원본 비율로 세로로 쭉 이어지도록 설정 */
 .moments{background:var(--paper)}
 .moments h2{
   margin:0 0 12px;font-size:56px;line-height:.9;letter-spacing:-.06em
 }
 .moments .sub{font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:24px}
 .collage{
-  display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start
+  display:flex;flex-direction:column;gap:12px;
 }
-.collage img{width:100%;height:100%;display:block;object-fit:cover;cursor:pointer}
-.wide{grid-column:1/-1;aspect-ratio:4/3}
-.tall{aspect-ratio:3/4}
-.sq{aspect-ratio:1/1}
-.offset{margin-top:0}
+.collage img{
+  width:100%;
+  height:auto; /* 원본 비율 유지 */
+  display:block;
+  cursor:pointer;
+  border-radius:4px;
+}
 .pull{
-  grid-column:1/-1;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
-  padding:18px 0;margin:12px 0 6px;display:flex;justify-content:space-between;gap:18px;align-items:flex-end
+  border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  padding:18px 0;margin:12px 0;display:flex;justify-content:space-between;gap:18px;align-items:flex-end
 }
 .pull .txt{font-size:24px;line-height:1.2;letter-spacing:-.03em;font-weight:700;width:76%}
 .pull .mark{font-size:42px;color:var(--green);line-height:.8}
 
-.beach{padding:0;background:var(--paper)}
+.beach{padding:0 16px;background:var(--paper)}
 .beach-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:0
+  display:flex;flex-direction:column;gap:12px;
 }
-.beach-grid .panel{position:relative;min-height:350px;overflow:hidden}
-.beach-grid img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;cursor:pointer}
-.beach-grid .type{
-  background:var(--paper);padding:24px;display:flex;flex-direction:column;justify-content:center;
+.beach-grid img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:4px;
+  cursor:pointer;
 }
-.beach-grid .type .huge{
-  font-size:48px;line-height:.9;letter-spacing:-.06em;font-weight:800;margin:0 0 12px 0;
+.beach-text-box{
+  background:#fff;padding:24px;border:1px solid var(--line);border-radius:4px;text-align:center;
 }
-.beach-grid .type .line{
+.beach-text-box .huge{
+  font-size:36px;line-height:1.1;letter-spacing:-.04em;font-weight:800;margin:0 0 12px 0;
+}
+.beach-text-box .line{
   border-top:1px solid var(--ink);padding-top:8px;font-size:10px;letter-spacing:.14em;text-transform:uppercase
 }
 
@@ -223,10 +227,6 @@ section{padding:50px 16px}
 <section class="sequence">
   <div class="full">
     <img src="photo2.jpg" alt="웨딩 사진 2">
-    <div class="overlay">
-      <div class="cap">Story 01</div>
-      <div class="big">GOOD DAYS.<br>ORDINARY DAYS.</div>
-    </div>
   </div>
 </section>
 
@@ -240,60 +240,58 @@ section{padding:50px 16px}
     <img src="photo3.jpg" alt="웨딩 사진 3">
     <div class="poster-copy">
       <h3>OUR<br><span class="g">STORY</span><br>GOES ON.</h3>
-      <div class="circle"></div>
     </div>
   </div>
 </section>
 
-<!-- 25장 사진 갤러리 -->
+<!-- 25장 고유 사진 갤러리 (중복 없이 photo4 ~ photo21 순차 배치) -->
 <section class="moments">
   <h2>OUR<br>MOMENTS</h2>
   <div class="sub">good days / ordinary days / all ours</div>
 
   <div class="collage">
-    <img class="wide" src="photo4.jpg" alt="사진 4">
-    <img class="tall" src="photo5.jpg" alt="사진 5">
-    <img class="tall offset" src="photo6.jpg" alt="사진 6">
+    <img src="photo4.jpg" alt="사진 4">
+    <img src="photo5.jpg" alt="사진 5">
+    <img src="photo6.jpg" alt="사진 6">
 
     <div class="pull">
       <div class="txt">좋은 날도,<br>별것 아닌 날도,<br>함께라서 즐거웠습니다.</div>
       <div class="mark">＊</div>
     </div>
 
-    <img class="wide" src="photo7.jpg" alt="사진 7">
-    <img class="sq" src="photo8.jpg" alt="사진 8">
-    <img class="sq offset" src="photo9.jpg" alt="사진 9">
-    <img class="wide" src="photo10.jpg" alt="사진 10">
-    <img class="tall" src="photo11.jpg" alt="사진 11">
-    <img class="tall offset" src="photo12.jpg" alt="사진 12">
-    <img class="wide" src="photo13.jpg" alt="사진 13">
-    <img class="sq" src="photo14.jpg" alt="사진 14">
-    <img class="sq offset" src="photo15.jpg" alt="사진 15">
-    <img class="wide" src="photo16.jpg" alt="사진 16">
-    <img class="tall" src="photo17.jpg" alt="사진 17">
-    <img class="tall offset" src="photo18.jpg" alt="사진 18">
-    <img class="wide" src="photo19.jpg" alt="사진 19">
-    <img class="sq" src="photo20.jpg" alt="사진 20">
-    <img class="sq offset" src="photo21.jpg" alt="사진 21">
-    <img class="wide" src="photo22.jpg" alt="사진 22">
-    <img class="tall" src="photo23.jpg" alt="사진 23">
-    <img class="sq" src="photo24.jpg" alt="사진 24">
-    <img class="sq offset" src="photo25.jpg" alt="사진 25">
+    <img src="photo7.jpg" alt="사진 7">
+    <img src="photo8.jpg" alt="사진 8">
+    <img src="photo9.jpg" alt="사진 9">
+    <img src="photo10.jpg" alt="사진 10">
+    <img src="photo11.jpg" alt="사진 11">
+    <img src="photo12.jpg" alt="사진 12">
+    <img src="photo13.jpg" alt="사진 13">
+    <img src="photo14.jpg" alt="사진 14">
+    <img src="photo15.jpg" alt="사진 15">
+    <img src="photo16.jpg" alt="사진 16">
+    <img src="photo17.jpg" alt="사진 17">
+    <img src="photo18.jpg" alt="사진 18">
+    <img src="photo19.jpg" alt="사진 19">
+    <img src="photo20.jpg" alt="사진 20">
+    <img src="photo21.jpg" alt="사진 21">
   </div>
 </section>
 
+<!-- 남은 고유 사진(photo22 ~ photo25)을 활용한 비치/마무리 섹션 (중복 없음) -->
 <section class="beach">
   <div class="beach-grid">
-    <div class="panel"><img src="photo4.jpg" alt="사진"></div>
-    <div class="panel type">
+    <img src="photo22.jpg" alt="사진 22">
+    <div class="beach-text-box">
       <p class="huge">SEA.<br>WIND.<br>US.</p>
       <div class="line">2026 / 10 / 18 / Sunday</div>
     </div>
-    <div class="panel type">
+    <img src="photo23.jpg" alt="사진 23">
+    <img src="photo24.jpg" alt="사진 24">
+    <div class="beach-text-box">
       <p class="huge" style="color:var(--green)">JUST<br>LIKE<br>THIS.</p>
       <div class="line">our small archive</div>
     </div>
-    <div class="panel"><img src="photo1.jpg" alt="사진"></div>
+    <img src="photo25.jpg" alt="사진 25">
   </div>
 </section>
 
@@ -308,7 +306,7 @@ section{padding:50px 16px}
 </section>
 
 <section class="account-section">
-  <div class="section-head" style="border-top:none; padding-top:0; margin-bottom:16px;"><span>Account / 마음 전하실 곳</span></div>
+  <div class="section-head" style="border-top:none; padding-top:0; margin-bottom:16px; font-size:10px; letter-spacing:.15em; text-transform:uppercase;"><span>Account / 마음 전하실 곳</span></div>
   <div style="padding: 0 0 24px 0;">
     <div class="account-box">
       <div class="account-title"><span>신랑 이원희</span> <button class="copy-btn" onclick="copyAccount('신한 110-229-952230', this)">계좌 복사</button></div>
