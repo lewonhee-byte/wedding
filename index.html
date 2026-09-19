@@ -43,9 +43,8 @@ header.hero{
 .hero-photo{
   position:relative;overflow:hidden;width:100%;margin-top:10px;
 }
-/* 메인 사진 원본 비율 보존 */
 .hero-photo img{
-  width:100%;height:auto;display:block;
+  width:100%;height:auto;display:block;cursor:pointer;
 }
 .stamp{
   position:absolute;right:8px;top:8px;background:var(--green);color:#fff;
@@ -69,19 +68,11 @@ section{padding:50px 16px}
   margin:0;width:100%;font-size:15px;line-height:1.9;letter-spacing:-.01em
 }
 
-/* 시퀀스 사진 원본 비율 보존 */
 .sequence{padding:0 16px;background:var(--paper)}
 .full{
   position:relative;width:100%;overflow:hidden;margin-bottom:16px;
 }
-.full img{width:100%;height:auto;display:block;}
-.full .overlay{
-  position:absolute;inset:auto 0 0 0;padding:18px 16px 20px;
-  background:linear-gradient(to top,rgba(0,0,0,.62),rgba(0,0,0,0));
-  color:#fff
-}
-.overlay .cap{font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
-.overlay .big{font-size:48px;line-height:.9;letter-spacing:-.06em;font-weight:800}
+.full img{width:100%;height:auto;display:block;cursor:pointer;}
 
 .poster{
   padding:0 16px;display:grid;grid-template-columns:40% 60%;background:var(--paper);gap:10px;align-items:center;margin-bottom:16px;
@@ -94,52 +85,62 @@ section{padding:50px 16px}
   writing-mode:vertical-rl;transform:rotate(180deg);
   font-size:48px;line-height:.8;font-weight:800;letter-spacing:-.07em
 }
-.poster .main img{width:100%;height:auto;display:block}
+.poster .main img{width:100%;height:auto;display:block;cursor:pointer;}
 .poster-copy{padding:18px;position:relative;overflow:hidden;background:var(--paper)}
 .poster-copy h3{
   margin:0;font-size:42px;line-height:.84;letter-spacing:-.07em
 }
 .poster-copy .g{color:var(--green)}
 
-/* 갤러리 25장: 사진이 잘리지 않고 원본 비율로 세로로 쭉 이어지도록 설정 */
+/* 갤러리 영역: 깔끔한 2열(2-Column) 그리드 배치로 스크롤 압축 */
 .moments{background:var(--paper)}
 .moments h2{
   margin:0 0 12px;font-size:56px;line-height:.9;letter-spacing:-.06em
 }
 .moments .sub{font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:24px}
 .collage{
-  display:flex;flex-direction:column;gap:12px;
+  display:grid;
+  grid-template-columns: repeat(2, 1fr); /* 2열 배치 */
+  gap: 10px;
 }
 .collage img{
   width:100%;
-  height:auto; /* 원본 비율 유지 */
+  height:100%;
+  object-fit:cover;
+  aspect-ratio: 3/4; /* 사진 비율 통일감 있게 정돈 */
   display:block;
   cursor:pointer;
   border-radius:4px;
 }
 .pull{
+  grid-column: 1 / -1; /* 인용구는 2열 전체 차지 */
   border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
   padding:18px 0;margin:12px 0;display:flex;justify-content:space-between;gap:18px;align-items:flex-end
 }
-.pull .txt{font-size:24px;line-height:1.2;letter-spacing:-.03em;font-weight:700;width:76%}
+.pull .txt{font-size:22px;line-height:1.2;letter-spacing:-.03em;font-weight:700;width:76%}
 .pull .mark{font-size:42px;color:var(--green);line-height:.8}
 
 .beach{padding:0 16px;background:var(--paper)}
 .beach-grid{
-  display:flex;flex-direction:column;gap:12px;
+  display:grid;
+  grid-template-columns: repeat(2, 1fr); /* 비치 섹션도 2열 그리드 */
+  gap: 10px;
 }
 .beach-grid img{
   width:100%;
-  height:auto;
+  height:100%;
+  object-fit:cover;
+  aspect-ratio: 3/4;
   display:block;
   border-radius:4px;
   cursor:pointer;
 }
 .beach-text-box{
-  background:#fff;padding:24px;border:1px solid var(--line);border-radius:4px;text-align:center;
+  background:#fff;padding:20px;border:1px solid var(--line);border-radius:4px;text-align:center;
+  display:flex;flex-direction:column;justify-content:center;
 }
 .beach-text-box .huge{
-  font-size:36px;line-height:1.1;letter-spacing:-.04em;font-weight:800;margin:0 0 12px 0;
+  font-size:32px;line-height:1.1;letter-spacing:-.04em;font-weight:800;margin:0 0 12px 0;
 }
 .beach-text-box .line{
   border-top:1px solid var(--ink);padding-top:8px;font-size:10px;letter-spacing:.14em;text-transform:uppercase
@@ -167,12 +168,23 @@ section{padding:50px 16px}
 
 .footer{padding:18px 16px;background:var(--paper);font-size:9px;letter-spacing:.12em;text-transform:uppercase;border-top:1px solid var(--ink)}
 
-/* Modal for Image Preview */
+/* Modal with Navigation Buttons */
 #imageModal{
-  position:fixed;inset:0;background:rgba(0,0,0,0.85);display:none;justify-content:center;align-items:center;z-index:999;padding:20px;
+  position:fixed;inset:0;background:rgba(0,0,0,0.9);display:none;justify-content:center;align-items:center;z-index:999;padding:10px;
 }
 #imageModal img{
-  max-width:100%;max-height:100%;object-fit:contain;
+  max-width:90%;max-height:85vh;object-fit:contain;border-radius:4px;
+}
+.modal-btn{
+  position:absolute;top:50%;transform:translateY(-50%);
+  background:rgba(255,255,255,0.2);color:#fff;border:none;font-size:28px;
+  padding:12px 16px;cursor:pointer;border-radius:50%;transition:0.2s;z-index:1000;
+}
+.modal-btn:hover{background:rgba(255,255,255,0.4);}
+.modal-prev{left:15px;}
+.modal-next{right:15px;}
+.modal-close{
+  position:absolute;top:20px;right:20px;background:none;color:#fff;border:none;font-size:32px;cursor:pointer;z-index:1000;
 }
 
 @media(min-width:700px){.wrap{margin:36px auto}}
@@ -244,7 +256,7 @@ section{padding:50px 16px}
   </div>
 </section>
 
-<!-- 25장 고유 사진 갤러리 (중복 없이 photo4 ~ photo21 순차 배치) -->
+<!-- 2열 그리드 갤러리 -->
 <section class="moments">
   <h2>OUR<br>MOMENTS</h2>
   <div class="sub">good days / ordinary days / all ours</div>
@@ -253,17 +265,17 @@ section{padding:50px 16px}
     <img src="photo4.jpg" alt="사진 4">
     <img src="photo5.jpg" alt="사진 5">
     <img src="photo6.jpg" alt="사진 6">
-
-    <div class="pull">
-      <div class="txt">좋은 날도,<br>별것 아닌 날도,<br>함께라서 즐거웠습니다.</div>
-      <div class="mark">＊</div>
-    </div>
-
     <img src="photo7.jpg" alt="사진 7">
     <img src="photo8.jpg" alt="사진 8">
     <img src="photo9.jpg" alt="사진 9">
     <img src="photo10.jpg" alt="사진 10">
     <img src="photo11.jpg" alt="사진 11">
+    
+    <div class="pull">
+      <div class="txt">좋은 날도,<br>별것 아닌 날도,<br>함께라서 즐거웠습니다.</div>
+      <div class="mark">＊</div>
+    </div>
+
     <img src="photo12.jpg" alt="사진 12">
     <img src="photo13.jpg" alt="사진 13">
     <img src="photo14.jpg" alt="사진 14">
@@ -277,7 +289,23 @@ section{padding:50px 16px}
   </div>
 </section>
 
-<!-- 남은 고유 사진(photo22 ~ photo25)을 활용한 비치/마무리 섹션 (중복 없음) -->
+<!-- 비치/마무리 섹션도 2열 그리드 활용 -->
+<section class="beach">
+  <div class="beach-grid">
+    <img src="photo22.jpg" alt="사진 22">
+    <div class="beach-text-box">
+      <p class="huge">SEA.<br>WIND.<br>US.</p>
+      <div class="line">2026 / 10 / 18 / Sunday</div>
+    </div>
+    <img src="photo23.jpg" alt="사진 23">
+    <img src="photo24.jpg" alt="사진 24">
+    <div class="beach-text-box">
+      <p class="huge" style="color:var(--green)">JUST<br>LIKE<br>THIS.</p>
+      <div class="line">our small archive</div>
+    </div>
+    <img src="photo25.jpg" alt="사진 25">
+  </div>
+</section>
 
 <section class="wedding">
   <div class="wedding-top">
@@ -306,9 +334,12 @@ section{padding:50px 16px}
 <div class="footer">© 2026 WONHEE LEE × EUNJEONG YANG</div>
 </main>
 
-<!-- Modal -->
-<div id="imageModal" onclick="closeModal()">
+<!-- Modal with Next/Prev Navigation -->
+<div id="imageModal">
+  <button class="modal-close" onclick="closeModal()">×</button>
+  <button class="modal-btn modal-prev" onclick="changeImage(-1)">&#10094;</button>
   <img id="modalImg" src="" alt="확대 이미지">
+  <button class="modal-btn modal-next" onclick="changeImage(1)">&#10095;</button>
 </div>
 
 <script>
@@ -320,14 +351,34 @@ function copyAccount(acc, btn){
   }).catch(()=>window.prompt("계좌번호를 복사해 주세요.", acc));
 }
 
-// Image Modal Preview
-document.querySelectorAll('.wrap img').forEach(img => {
+// Image Modal & Slider Logic
+const allImages = Array.from(document.querySelectorAll('.wrap img')).map(img => img.src);
+let currentIndex = 0;
+
+document.querySelectorAll('.wrap img').forEach((img, index) => {
   img.addEventListener('click', () => {
-    document.getElementById('modalImg').src = img.src;
-    document.getElementById('imageModal').style.display = 'flex';
+    currentIndex = index;
+    openModal(currentIndex);
   });
 });
-function closeModal(){
+
+function openModal(index) {
+  currentIndex = index;
+  document.getElementById('modalImg').src = allImages[currentIndex];
+  document.getElementById('imageModal').style.display = 'flex';
+}
+
+function changeImage(direction) {
+  currentIndex += direction;
+  if (currentIndex < 0) {
+    currentIndex = allImages.length - 1;
+  } else if (currentIndex >= allImages.length) {
+    currentIndex = 0;
+  }
+  document.getElementById('modalImg').src = allImages[currentIndex];
+}
+
+function closeModal() {
   document.getElementById('imageModal').style.display = 'none';
 }
 </script>
